@@ -1592,3 +1592,77 @@ p {
     grid-template-columns: 1fr 1fr;
   }
 }
+
+/* ─── ADMIN ACCESS BUTTON ─── */
+.admin-fab {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 900;
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+}
+
+/* Reveal only on hover near bottom-left corner */
+.admin-fab:hover,
+.admin-fab:focus-within {
+  opacity: 1;
+}
+
+/* Tiny trigger zone — always present but invisible */
+.admin-fab::before {
+  content: '';
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  z-index: 899;
+}
+
+.admin-fab:hover {
+  opacity: 1;
+}
+
+/* Show faintly on long-press / focus for accessibility */
+.admin-fab-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(15, 28, 63, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 9px 14px;
+  font-family: var(--font-head);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s var(--ease);
+  white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.admin-fab-btn:hover {
+  background: var(--navy);
+  color: var(--gold);
+  border-color: rgba(245,180,0,0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.4);
+}
+
+.admin-fab-lock {
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+/* On mobile: hide admin button entirely for cleanliness */
+@media (max-width: 768px) {
+  .admin-fab {
+    display: none;
+  }
+}
