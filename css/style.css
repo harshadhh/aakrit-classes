@@ -1666,3 +1666,50 @@ p {
     display: none;
   }
 }
+
+/* ─── MOBILE ADMIN BUTTON (in sticky bar) ─── */
+.btn-admin-mobile {
+  display: none; /* hidden by default, shown in mobile sticky */
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  min-height: 48px;
+  background: rgba(15, 28, 63, 0.08);
+  border: 1.5px solid rgba(15, 28, 63, 0.15);
+  border-radius: var(--r-sm);
+  font-size: 20px;
+  text-decoration: none;
+  transition: all 0.2s var(--ease);
+  flex-shrink: 0;
+}
+
+.btn-admin-mobile:hover,
+.btn-admin-mobile:active {
+  background: var(--navy);
+  border-color: var(--navy);
+}
+
+@media (max-width: 768px) {
+  /* Admin fab on desktop: keep hover-only behavior */
+  /* Admin on mobile: show as icon in sticky bar */
+  .btn-admin-mobile {
+    display: flex;
+  }
+
+  /* Admin desktop fab: completely hide on mobile */
+  .admin-fab {
+    display: none !important;
+  }
+
+  /* Adjust sticky bar so admin icon doesn't shrink the text buttons */
+  .mobile-sticky {
+    padding: 10px 12px;
+  }
+
+  .mobile-sticky .btn:not(.btn-admin-mobile) {
+    flex: 1;
+    justify-content: center;
+    font-size: 14px;
+    padding: 12px 10px;
+  }
+}

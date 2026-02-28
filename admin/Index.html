@@ -617,21 +617,106 @@ textarea.form-control{resize:vertical;min-height:80px;}
   display:none;position:fixed;inset:0;
   background:rgba(0,0,0,0.5);z-index:199;
 }
+/* ══════════════════════════════
+   MOBILE RESPONSIVE — ADMIN PANEL
+   Full coverage: 768px & 480px
+══════════════════════════════ */
 @media(max-width:768px){
+  /* ── Layout ── */
   :root{--sidebar-w:0px;}
-  .sidebar{transform:translateX(-240px);}
-  .sidebar.mobile-open{transform:translateX(0);width:240px;}
+  .sidebar{
+    transform:translateX(-240px);
+    width:240px;
+    box-shadow:none;
+  }
+  .sidebar.mobile-open{
+    transform:translateX(0);
+    box-shadow: 4px 0 32px rgba(0,0,0,0.4);
+  }
   .sidebar-overlay.show{display:block;}
   .topbar{left:0;}
-  .main{margin-left:0;}
+  .main{margin-left:0;padding:16px;}
   .hamburger-btn{display:block;}
-  .form-row{grid-template-columns:1fr;}
-  .report-grid{grid-template-columns:1fr;}
+
+  /* ── Login card ── */
+  .login-card{padding:28px 20px;margin:0 16px;}
+  .login-logo h1{font-size:18px;}
+
+  /* ── Stats grid ── */
   .stats-grid{grid-template-columns:1fr 1fr;}
+  .stat-value{font-size:24px;}
+
+  /* ── Quick actions ── */
+  .quick-actions{grid-template-columns:1fr 1fr;display:grid;}
+  .quick-card{flex-direction:column;text-align:center;padding:12px;}
+
+  /* ── Tables: card-style on mobile ── */
+  .table-wrap{border-radius:var(--r-md);overflow:hidden;}
+  .table-toolbar{flex-direction:column;align-items:stretch;gap:8px;}
+  .search-box{max-width:100%;}
+  table{display:block;}
+  thead{display:none;} /* hide column headers — data shown inline */
+  tbody{display:flex;flex-direction:column;gap:1px;}
+  tbody tr{
+    display:flex;flex-direction:column;
+    padding:14px 16px;border-bottom:1px solid var(--border-l);
+    gap:6px;background:var(--surface);
+  }
+  tbody tr:hover{background:var(--surface2);}
+  tbody td{
+    padding:0;border:none;font-size:13px;
+    display:flex;align-items:center;gap:8px;
+  }
+  /* Label each cell with its column name via data-label */
+  tbody td::before{
+    content:attr(data-label);
+    font-size:10px;font-weight:700;
+    color:var(--text-muted);letter-spacing:0.06em;
+    text-transform:uppercase;min-width:80px;flex-shrink:0;
+  }
+  /* Action buttons row */
+  tbody td:last-child{
+    flex-direction:row;margin-top:6px;
+    padding-top:10px;border-top:1px solid var(--border-l);
+  }
+  tbody td:last-child::before{display:none;}
+
+  /* ── Modals ── */
+  .modal-overlay{padding:12px;}
+  .modal{max-height:95vh;border-radius:var(--r-md);}
+  .modal-header{padding:16px 18px;}
+  .modal-body{padding:16px 18px;}
+  .modal-footer{padding:14px 18px;}
+  .form-row{grid-template-columns:1fr;}
+
+  /* ── Cards & grids ── */
+  .card-grid{grid-template-columns:1fr;}
+  .report-grid{grid-template-columns:1fr;}
+  .web-control-grid{grid-template-columns:1fr;}
+
+  /* ── Announcements ── */
+  .ann-card{flex-direction:column;gap:10px;}
+
+  /* ── Section header ── */
+  .section-header{flex-direction:column;align-items:flex-start;}
+
+  /* ── Topbar ── */
+  .topbar{padding:0 14px;}
+  .topbar__date{display:none;}
+
+  /* ── Settings ── */
+  .setting-row{flex-direction:column;align-items:flex-start;gap:10px;}
+  .setting-control{width:100%;}
+  .setting-control .form-control{width:100%;}
 }
+
 @media(max-width:480px){
   .stats-grid{grid-template-columns:1fr;}
-  .main{padding:16px;}
+  .main{padding:12px;}
+  .quick-actions{grid-template-columns:1fr 1fr;}
+  .stat-card{padding:16px;}
+  .login-card{padding:24px 16px;}
+  .topbar__title{font-size:15px;}
 }
 </style>
 </head>
@@ -1659,11 +1744,11 @@ async function loadDashboard() {
     } else {
       tbody.innerHTML = s.recentEnquiries.map(e=>`
         <tr>
-          <td><b>${escHtml(e.name)}</b></td>
-          <td>${escHtml(e.phone)}</td>
-          <td>${escHtml(e.grade)}</td>
-          <td><span style="font-family:var(--mono);font-size:12px;">${escHtml(e.date)}</span></td>
-          <td>${statusBadge(e.status)}</td>
+          <td data-label="Name"><b>${escHtml(e.name)}</b></td>
+          <td data-label="Phone">${escHtml(e.phone)}</td>
+          <td data-label="Grade">${escHtml(e.grade)}</td>
+          <td data-label="Date"><span style="font-family:var(--mono);font-size:12px;">${escHtml(e.date)}</span></td>
+          <td data-label="Status">${statusBadge(e.status)}</td>
         </tr>`).join('');
     }
   } catch(e) { toast('Failed to load dashboard: '+e.message,'error'); }
@@ -1698,14 +1783,14 @@ function renderStudents() {
   }
   tbody.innerHTML = rows.map(s=>`
     <tr>
-      <td><span style="font-family:var(--mono);font-size:11px;color:var(--text-muted);">${escHtml(s.StudentID)}</span></td>
-      <td><b>${escHtml(s.Name)}</b><br><span style="font-size:11px;color:var(--text-muted);">${escHtml(s.ParentPhone||'')}</span></td>
-      <td>${escHtml(s.Class)}</td>
-      <td>${escHtml(s.Board)}</td>
-      <td>${escHtml(s.Phone)}</td>
-      <td>${escHtml(s.Batch)}</td>
-      <td><span style="font-family:var(--mono);font-size:11px;">${escHtml(s.JoinDate)}</span></td>
-      <td>${statusBadge(s.Status)}</td>
+      <td data-label="ID"><span style="font-family:var(--mono);font-size:11px;color:var(--text-muted);">${escHtml(s.StudentID)}</span></td>
+      <td data-label="Name"><b>${escHtml(s.Name)}</b><span style="font-size:11px;color:var(--text-muted);margin-left:6px;">${escHtml(s.ParentPhone||'')}</span></td>
+      <td data-label="Class">${escHtml(s.Class)}</td>
+      <td data-label="Board">${escHtml(s.Board)}</td>
+      <td data-label="Phone"><a href="tel:${escHtml(s.Phone)}" style="color:var(--blue)">${escHtml(s.Phone)}</a></td>
+      <td data-label="Batch">${escHtml(s.Batch)}</td>
+      <td data-label="Joined"><span style="font-family:var(--mono);font-size:11px;">${escHtml(s.JoinDate)}</span></td>
+      <td data-label="Status">${statusBadge(s.Status)}</td>
       <td>
         <button class="btn btn-secondary btn-sm" onclick='editStudent(${JSON.stringify(s)})'>Edit</button>
         <button class="btn btn-danger btn-sm" onclick="deleteStudent('${s.StudentID}')">Del</button>
@@ -1810,14 +1895,14 @@ function renderFees() {
   }
   tbody.innerHTML = rows.map(f=>`
     <tr>
-      <td><span style="font-family:var(--mono);font-size:11px;color:var(--text-muted);">${escHtml(f.FeeID)}</span></td>
-      <td><b>${escHtml(f.StudentName)}</b></td>
-      <td><b style="font-family:var(--mono);">${fmtCur(f.Amount)}</b></td>
-      <td>${escHtml(f.Type)}</td>
-      <td>${escHtml(f.Month)}</td>
-      <td>${escHtml(f.Mode)}</td>
-      <td><span style="font-family:var(--mono);font-size:11px;">${escHtml(f.PaidDate)}</span></td>
-      <td>${statusBadge(f.Status)}</td>
+      <td data-label="Fee ID"><span style="font-family:var(--mono);font-size:11px;color:var(--text-muted);">${escHtml(f.FeeID)}</span></td>
+      <td data-label="Student"><b>${escHtml(f.StudentName)}</b></td>
+      <td data-label="Amount"><b style="font-family:var(--mono);">${fmtCur(f.Amount)}</b></td>
+      <td data-label="Type">${escHtml(f.Type)}</td>
+      <td data-label="Month">${escHtml(f.Month)}</td>
+      <td data-label="Mode">${escHtml(f.Mode)}</td>
+      <td data-label="Date"><span style="font-family:var(--mono);font-size:11px;">${escHtml(f.PaidDate)}</span></td>
+      <td data-label="Status">${statusBadge(f.Status)}</td>
       <td><button class="btn btn-secondary btn-sm" onclick='editFee(${JSON.stringify(f)})'>Edit</button></td>
     </tr>`).join('');
 }
@@ -1901,14 +1986,14 @@ function renderEnquiries() {
   }
   tbody.innerHTML = rows.map(e=>`
     <tr>
-      <td><span style="font-family:var(--mono);font-size:11px;color:var(--text-muted);">${escHtml(e.EnquiryID)}</span></td>
-      <td><b>${escHtml(e.Name)}</b></td>
-      <td><a href="tel:${escHtml(e.Phone)}" style="color:var(--blue);font-family:var(--mono);font-size:12px;">${escHtml(e.Phone)}</a></td>
-      <td>${escHtml(e.Grade)}</td>
-      <td><span class="badge badge-gray">${escHtml(e.Source)}</span></td>
-      <td><span style="font-family:var(--mono);font-size:11px;">${escHtml(e.Date)}</span></td>
-      <td><span style="font-family:var(--mono);font-size:11px;${e.FollowUpDate?'color:var(--orange);':''}">${escHtml(e.FollowUpDate)||'—'}</span></td>
-      <td>${statusBadge(e.Status)}</td>
+      <td data-label="ID"><span style="font-family:var(--mono);font-size:11px;color:var(--text-muted);">${escHtml(e.EnquiryID)}</span></td>
+      <td data-label="Name"><b>${escHtml(e.Name)}</b></td>
+      <td data-label="Phone"><a href="tel:${escHtml(e.Phone)}" style="color:var(--blue);font-family:var(--mono);font-size:12px;">${escHtml(e.Phone)}</a></td>
+      <td data-label="Grade">${escHtml(e.Grade)}</td>
+      <td data-label="Source"><span class="badge badge-gray">${escHtml(e.Source)}</span></td>
+      <td data-label="Date"><span style="font-family:var(--mono);font-size:11px;">${escHtml(e.Date)}</span></td>
+      <td data-label="Follow Up"><span style="font-family:var(--mono);font-size:11px;${e.FollowUpDate?'color:var(--orange);':''}">${escHtml(e.FollowUpDate)||'—'}</span></td>
+      <td data-label="Status">${statusBadge(e.Status)}</td>
       <td>
         <button class="btn btn-secondary btn-sm" onclick='editEnquiry(${JSON.stringify(e)})'>Edit</button>
         <button class="btn btn-danger btn-sm" onclick="deleteEnquiry('${e.EnquiryID}')">Del</button>
@@ -1998,20 +2083,20 @@ function renderBatches() {
   tbody.innerHTML = state.batches.map(b=>{
     const pct = b.MaxStrength>0 ? Math.round((b.CurrentStrength/b.MaxStrength)*100) : 0;
     return `<tr>
-      <td><span style="font-family:var(--mono);font-size:11px;color:var(--text-muted);">${escHtml(b.BatchID)}</span></td>
-      <td><b>${escHtml(b.BatchName)}</b></td>
-      <td>${escHtml(b.Class)}</td>
-      <td>${escHtml(b.Subject)}</td>
-      <td>${escHtml(b.Faculty)}</td>
-      <td><span style="font-family:var(--mono);font-size:12px;">${escHtml(b.Time)}</span></td>
-      <td>${escHtml(b.Days)}</td>
-      <td>
+      <td data-label="ID"><span style="font-family:var(--mono);font-size:11px;color:var(--text-muted);">${escHtml(b.BatchID)}</span></td>
+      <td data-label="Batch"><b>${escHtml(b.BatchName)}</b></td>
+      <td data-label="Class">${escHtml(b.Class)}</td>
+      <td data-label="Subject">${escHtml(b.Subject)}</td>
+      <td data-label="Faculty">${escHtml(b.Faculty)}</td>
+      <td data-label="Time"><span style="font-family:var(--mono);font-size:12px;">${escHtml(b.Time)}</span></td>
+      <td data-label="Days">${escHtml(b.Days)}</td>
+      <td data-label="Strength">
         <span style="font-family:var(--mono);">${b.CurrentStrength}/${b.MaxStrength}</span>
         <div style="height:4px;background:#eee;border-radius:2px;margin-top:4px;width:80px;">
           <div style="height:4px;background:${pct>=90?'var(--red)':pct>=70?'var(--gold)':'var(--green)'};border-radius:2px;width:${pct}%;"></div>
         </div>
       </td>
-      <td>${statusBadge(b.Status)}</td>
+      <td data-label="Status">${statusBadge(b.Status)}</td>
       <td>
         <button class="btn btn-secondary btn-sm" onclick='editBatch(${JSON.stringify(b)})'>Edit</button>
         <button class="btn btn-danger btn-sm" onclick="deleteBatch('${b.BatchID}')">Del</button>
