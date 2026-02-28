@@ -1,0 +1,2281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aakrit Classes — Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+/* ══════════════════════════════════════════
+   AAKRIT ADMIN — DESIGN SYSTEM
+   Theme: Obsidian Precision
+   Dark sidebar · Clean whites · Gold accent
+══════════════════════════════════════════ */
+:root {
+  --bg:          #0D1117;
+  --bg2:         #161B22;
+  --bg3:         #1C2333;
+  --surface:     #FFFFFF;
+  --surface2:    #F6F8FA;
+  --surface3:    #EAEEF2;
+  --border:      #30363D;
+  --border-l:    #D8DEE4;
+  --gold:        #F5B400;
+  --gold-dim:    rgba(245,180,0,0.12);
+  --gold-border: rgba(245,180,0,0.3);
+  --green:       #2DA44E;
+  --green-dim:   rgba(45,164,78,0.12);
+  --red:         #CF222E;
+  --red-dim:     rgba(207,34,46,0.1);
+  --blue:        #0969DA;
+  --blue-dim:    rgba(9,105,218,0.1);
+  --orange:      #E16F24;
+  --orange-dim:  rgba(225,111,36,0.1);
+  --text-primary:   #24292F;
+  --text-secondary: #57606A;
+  --text-muted:     #8C959F;
+  --text-inverse:   #FFFFFF;
+  --sidebar-w: 240px;
+  --topbar-h:  60px;
+  --font: 'DM Sans', sans-serif;
+  --mono: 'DM Mono', monospace;
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 16px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.06);
+  --shadow-lg: 0 16px 40px rgba(0,0,0,0.12);
+  --ease: cubic-bezier(0.4,0,0.2,1);
+  --t: 200ms;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{height:100%;overflow-x:hidden;}
+body{
+  font-family:var(--font);font-size:14px;line-height:1.5;
+  background:var(--surface2);color:var(--text-primary);
+  height:100%;overflow:hidden;
+}
+a{text-decoration:none;color:inherit;}
+ul{list-style:none;}
+button{font-family:var(--font);cursor:pointer;}
+input,select,textarea{font-family:var(--font);}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:5px;height:5px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:var(--border-l);border-radius:4px;}
+
+/* ══════════════════
+   LOGIN SCREEN
+══════════════════ */
+#login-screen{
+  position:fixed;inset:0;
+  background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  z-index:9999;
+  animation:fadeIn .3s var(--ease);
+}
+#login-screen.hide{
+  animation:fadeOut .3s var(--ease) forwards;
+  pointer-events:none;
+}
+.login-card{
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:var(--r-lg);
+  padding:40px;
+  width:100%;max-width:380px;
+  box-shadow:0 24px 64px rgba(0,0,0,0.5);
+}
+.login-logo{
+  text-align:center;margin-bottom:32px;
+}
+.login-logo-mark{
+  width:56px;height:56px;
+  background:var(--gold);
+  border-radius:var(--r-md);
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;font-weight:700;color:var(--bg);
+  margin:0 auto 14px;letter-spacing:-1px;
+  font-family:var(--font);
+}
+.login-logo h1{
+  font-size:20px;font-weight:700;color:var(--text-inverse);
+  letter-spacing:-0.02em;
+}
+.login-logo p{
+  font-size:12px;color:#8C959F;margin-top:4px;
+  letter-spacing:0.04em;text-transform:uppercase;
+}
+.login-label{
+  display:block;font-size:12px;font-weight:600;
+  color:#8C959F;letter-spacing:0.06em;text-transform:uppercase;
+  margin-bottom:8px;
+}
+.login-input{
+  width:100%;padding:12px 14px;
+  background:var(--bg3);
+  border:1.5px solid var(--border);
+  border-radius:var(--r-sm);
+  color:var(--text-inverse);font-size:15px;
+  transition:border-color var(--t) var(--ease);
+  outline:none;
+}
+.login-input:focus{border-color:var(--gold);}
+.login-input::placeholder{color:#4A5568;}
+.login-btn{
+  width:100%;padding:13px;margin-top:20px;
+  background:var(--gold);color:var(--bg);
+  border:none;border-radius:var(--r-sm);
+  font-size:15px;font-weight:700;
+  transition:all var(--t) var(--ease);
+  letter-spacing:0.01em;
+}
+.login-btn:hover{background:#FFD54A;transform:translateY(-1px);}
+.login-btn:active{transform:translateY(0);}
+.login-error{
+  background:var(--red-dim);border:1px solid rgba(207,34,46,0.3);
+  color:#FF8A80;border-radius:var(--r-sm);
+  padding:10px 14px;font-size:13px;
+  margin-top:14px;display:none;text-align:center;
+}
+.login-error.show{display:block;}
+
+/* ══════════════════
+   APP LAYOUT
+══════════════════ */
+#app{display:none;height:100vh;flex-direction:column;}
+#app.show{display:flex;}
+
+/* ── SIDEBAR ── */
+.sidebar{
+  position:fixed;top:0;left:0;bottom:0;
+  width:var(--sidebar-w);
+  background:var(--bg);
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;
+  z-index:200;
+  transition:transform var(--t) var(--ease);
+}
+.sidebar__brand{
+  padding:20px 18px 16px;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:12px;
+}
+.sidebar__brand-mark{
+  width:34px;height:34px;
+  background:var(--gold);
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:15px;color:var(--bg);
+  flex-shrink:0;
+}
+.sidebar__brand-text{
+  font-size:15px;font-weight:700;color:var(--text-inverse);
+  letter-spacing:-0.02em;line-height:1.2;
+}
+.sidebar__brand-sub{
+  font-size:11px;color:#6E7681;
+}
+.sidebar__nav{
+  flex:1;overflow-y:auto;padding:12px 10px;
+}
+.nav-section-label{
+  font-size:10px;font-weight:600;letter-spacing:0.1em;
+  text-transform:uppercase;color:#6E7681;
+  padding:10px 8px 4px;
+}
+.nav-item{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 10px;border-radius:var(--r-sm);
+  color:#8C959F;font-size:13px;font-weight:500;
+  cursor:pointer;
+  transition:all var(--t) var(--ease);
+  position:relative;
+  margin-bottom:1px;
+  border:none;background:none;width:100%;text-align:left;
+}
+.nav-item:hover{background:rgba(255,255,255,0.06);color:#CDD5DF;}
+.nav-item.active{
+  background:var(--gold-dim);
+  color:var(--gold);
+  font-weight:600;
+}
+.nav-item.active .nav-icon{color:var(--gold);}
+.nav-icon{font-size:16px;width:20px;text-align:center;flex-shrink:0;}
+.nav-badge{
+  margin-left:auto;
+  background:var(--gold);color:var(--bg);
+  font-size:10px;font-weight:700;
+  padding:1px 6px;border-radius:100px;
+  min-width:18px;text-align:center;
+}
+.sidebar__footer{
+  padding:14px 12px;border-top:1px solid var(--border);
+}
+.sidebar__user{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 10px;border-radius:var(--r-sm);
+}
+.sidebar__avatar{
+  width:30px;height:30px;border-radius:50%;
+  background:var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:700;color:var(--bg);flex-shrink:0;
+}
+.sidebar__user-info{flex:1;}
+.sidebar__user-name{font-size:13px;font-weight:600;color:var(--text-inverse);}
+.sidebar__user-role{font-size:11px;color:#6E7681;}
+.logout-btn{
+  background:none;border:none;
+  color:#6E7681;font-size:18px;cursor:pointer;
+  padding:4px;border-radius:4px;
+  transition:color var(--t);
+}
+.logout-btn:hover{color:#CF222E;}
+
+/* ── TOPBAR ── */
+.topbar{
+  position:fixed;top:0;left:var(--sidebar-w);right:0;
+  height:var(--topbar-h);
+  background:var(--surface);
+  border-bottom:1px solid var(--border-l);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;z-index:100;
+  box-shadow:var(--shadow-sm);
+}
+.topbar__left{display:flex;align-items:center;gap:12px;}
+.topbar__title{
+  font-size:17px;font-weight:700;color:var(--text-primary);
+  letter-spacing:-0.02em;
+}
+.topbar__sub{font-size:12px;color:var(--text-muted);}
+.topbar__right{display:flex;align-items:center;gap:12px;}
+.topbar__date{
+  font-size:12px;color:var(--text-muted);font-family:var(--mono);
+}
+
+/* ── MAIN CONTENT ── */
+.main{
+  margin-left:var(--sidebar-w);
+  margin-top:var(--topbar-h);
+  height:calc(100vh - var(--topbar-h));
+  overflow-y:auto;
+  padding:24px;
+}
+
+/* ── PAGE ── */
+.page{display:none;}
+.page.active{display:block;}
+
+/* ══════════════════
+   COMPONENTS
+══════════════════ */
+
+/* ── STAT CARDS ── */
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:16px;margin-bottom:24px;
+}
+.stat-card{
+  background:var(--surface);
+  border:1px solid var(--border-l);
+  border-radius:var(--r-md);
+  padding:20px;
+  box-shadow:var(--shadow-sm);
+  transition:all var(--t) var(--ease);
+  position:relative;overflow:hidden;
+}
+.stat-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--accent,#E5E7EB);
+}
+.stat-card:hover{box-shadow:var(--shadow-md);transform:translateY(-1px);}
+.stat-card--gold{--accent:var(--gold);}
+.stat-card--green{--accent:var(--green);}
+.stat-card--blue{--accent:var(--blue);}
+.stat-card--red{--accent:var(--red);}
+.stat-card--orange{--accent:var(--orange);}
+.stat-icon{
+  font-size:22px;margin-bottom:12px;
+}
+.stat-value{
+  font-size:30px;font-weight:700;color:var(--text-primary);
+  letter-spacing:-0.03em;line-height:1;margin-bottom:6px;
+  font-family:var(--mono);
+}
+.stat-label{font-size:12px;color:var(--text-muted);font-weight:500;}
+.stat-delta{
+  font-size:11px;font-weight:600;
+  margin-top:8px;display:inline-flex;align-items:center;gap:4px;
+  padding:2px 8px;border-radius:100px;
+}
+.stat-delta--up{background:var(--green-dim);color:var(--green);}
+.stat-delta--down{background:var(--red-dim);color:var(--red);}
+
+/* ── SECTION HEADER ── */
+.section-header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:16px;flex-wrap:wrap;gap:12px;
+}
+.section-title{
+  font-size:16px;font-weight:700;color:var(--text-primary);
+  letter-spacing:-0.02em;
+}
+.section-sub{font-size:12px;color:var(--text-muted);margin-top:2px;}
+
+/* ── BUTTONS ── */
+.btn{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:8px 16px;border-radius:var(--r-sm);
+  font-size:13px;font-weight:600;border:none;
+  cursor:pointer;transition:all var(--t) var(--ease);
+  white-space:nowrap;
+}
+.btn-primary{background:var(--gold);color:var(--bg);}
+.btn-primary:hover{background:#FFD54A;transform:translateY(-1px);}
+.btn-secondary{
+  background:var(--surface);color:var(--text-primary);
+  border:1px solid var(--border-l);
+}
+.btn-secondary:hover{background:var(--surface2);}
+.btn-danger{background:var(--red-dim);color:var(--red);border:1px solid rgba(207,34,46,0.2);}
+.btn-danger:hover{background:var(--red);color:#fff;}
+.btn-success{background:var(--green-dim);color:var(--green);border:1px solid rgba(45,164,78,0.2);}
+.btn-success:hover{background:var(--green);color:#fff;}
+.btn-sm{padding:5px 11px;font-size:12px;}
+.btn-icon{padding:7px;border-radius:var(--r-sm);}
+
+/* ── TABLE ── */
+.table-wrap{
+  background:var(--surface);
+  border:1px solid var(--border-l);
+  border-radius:var(--r-md);
+  overflow:hidden;
+  box-shadow:var(--shadow-sm);
+}
+.table-toolbar{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 16px;border-bottom:1px solid var(--border-l);
+  flex-wrap:wrap;
+}
+.search-box{
+  display:flex;align-items:center;gap:8px;
+  background:var(--surface2);
+  border:1px solid var(--border-l);
+  border-radius:var(--r-sm);
+  padding:7px 12px;flex:1;max-width:280px;
+}
+.search-box input{
+  border:none;background:transparent;
+  font-size:13px;color:var(--text-primary);outline:none;width:100%;
+}
+.search-box input::placeholder{color:var(--text-muted);}
+.filter-select{
+  padding:7px 10px;border:1px solid var(--border-l);
+  border-radius:var(--r-sm);font-size:13px;
+  background:var(--surface2);color:var(--text-primary);
+  outline:none;cursor:pointer;
+}
+table{width:100%;border-collapse:collapse;}
+thead th{
+  background:var(--surface2);
+  padding:10px 16px;
+  text-align:left;font-size:11px;font-weight:600;
+  color:var(--text-muted);letter-spacing:0.06em;text-transform:uppercase;
+  border-bottom:1px solid var(--border-l);
+  white-space:nowrap;
+}
+tbody tr{
+  border-bottom:1px solid var(--border-l);
+  transition:background var(--t) var(--ease);
+}
+tbody tr:last-child{border-bottom:none;}
+tbody tr:hover{background:var(--surface2);}
+tbody td{
+  padding:12px 16px;font-size:13px;color:var(--text-primary);
+  vertical-align:middle;
+}
+.empty-state{
+  text-align:center;padding:60px 24px;color:var(--text-muted);
+}
+.empty-icon{font-size:40px;margin-bottom:12px;opacity:0.4;}
+.empty-text{font-size:14px;font-weight:500;}
+.empty-sub{font-size:12px;margin-top:4px;}
+
+/* ── BADGES / PILLS ── */
+.badge{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:3px 9px;border-radius:100px;
+  font-size:11px;font-weight:600;white-space:nowrap;
+}
+.badge-green{background:var(--green-dim);color:var(--green);}
+.badge-red{background:var(--red-dim);color:var(--red);}
+.badge-gold{background:var(--gold-dim);color:#B08A00;}
+.badge-blue{background:var(--blue-dim);color:var(--blue);}
+.badge-orange{background:var(--orange-dim);color:var(--orange);}
+.badge-gray{background:#F1F3F4;color:var(--text-muted);}
+
+/* ── CARDS ── */
+.card{
+  background:var(--surface);border:1px solid var(--border-l);
+  border-radius:var(--r-md);padding:20px;
+  box-shadow:var(--shadow-sm);
+}
+.card-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:16px;
+}
+
+/* ── MODAL ── */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,0.5);
+  z-index:1000;display:flex;align-items:center;justify-content:center;
+  padding:20px;opacity:0;pointer-events:none;
+  transition:opacity var(--t) var(--ease);
+}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal{
+  background:var(--surface);border-radius:var(--r-lg);
+  width:100%;max-width:540px;max-height:90vh;overflow-y:auto;
+  box-shadow:var(--shadow-lg);
+  transform:scale(0.95) translateY(10px);
+  transition:transform var(--t) var(--ease);
+}
+.modal-overlay.open .modal{transform:scale(1) translateY(0);}
+.modal-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 24px;border-bottom:1px solid var(--border-l);
+}
+.modal-title{font-size:16px;font-weight:700;color:var(--text-primary);}
+.modal-close{
+  background:none;border:none;font-size:20px;
+  color:var(--text-muted);cursor:pointer;padding:4px;
+  border-radius:4px;transition:all var(--t);
+  line-height:1;
+}
+.modal-close:hover{background:var(--surface2);color:var(--text-primary);}
+.modal-body{padding:24px;}
+.modal-footer{
+  padding:16px 24px;border-top:1px solid var(--border-l);
+  display:flex;justify-content:flex-end;gap:10px;
+}
+
+/* ── FORM ── */
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-group{margin-bottom:16px;}
+.form-label{
+  display:block;font-size:12px;font-weight:600;
+  color:var(--text-secondary);margin-bottom:6px;
+  letter-spacing:0.02em;
+}
+.form-label span{color:var(--red);}
+.form-control{
+  width:100%;padding:9px 12px;
+  border:1.5px solid var(--border-l);
+  border-radius:var(--r-sm);font-size:13px;
+  color:var(--text-primary);background:var(--surface);
+  outline:none;transition:border-color var(--t) var(--ease);
+}
+.form-control:focus{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-dim);}
+textarea.form-control{resize:vertical;min-height:80px;}
+.form-hint{font-size:11px;color:var(--text-muted);margin-top:4px;}
+
+/* ── TOAST ── */
+.toast-container{
+  position:fixed;bottom:24px;right:24px;
+  display:flex;flex-direction:column;gap:10px;z-index:9000;
+}
+.toast{
+  background:var(--bg);color:var(--text-inverse);
+  border:1px solid var(--border);
+  border-radius:var(--r-md);padding:12px 18px;
+  font-size:13px;font-weight:500;min-width:260px;
+  display:flex;align-items:center;gap:10px;
+  box-shadow:var(--shadow-lg);
+  animation:slideUp .25s var(--ease);
+}
+.toast--success{border-color:rgba(45,164,78,0.4);}
+.toast--error{border-color:rgba(207,34,46,0.4);}
+.toast-icon{font-size:16px;}
+@keyframes slideUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+/* ── LOADER ── */
+.loader{
+  display:inline-block;width:16px;height:16px;
+  border:2px solid rgba(0,0,0,0.1);
+  border-top-color:var(--gold);border-radius:50%;
+  animation:spin .7s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+.page-loader{
+  display:flex;align-items:center;justify-content:center;
+  padding:80px;color:var(--text-muted);flex-direction:column;gap:14px;
+}
+
+/* ── QUICK ACTION ROW ── */
+.quick-actions{
+  display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;
+}
+.quick-card{
+  display:flex;align-items:center;gap:10px;
+  background:var(--surface);border:1px solid var(--border-l);
+  border-radius:var(--r-md);padding:14px 18px;
+  cursor:pointer;transition:all var(--t) var(--ease);
+  box-shadow:var(--shadow-sm);flex:1;min-width:140px;
+}
+.quick-card:hover{border-color:var(--gold);box-shadow:0 4px 16px var(--gold-dim);}
+.quick-card-icon{font-size:22px;}
+.quick-card-label{font-size:13px;font-weight:600;color:var(--text-primary);}
+
+/* ── ANNOUNCEMENT CARD ── */
+.ann-card{
+  background:var(--surface);border:1px solid var(--border-l);
+  border-radius:var(--r-md);padding:16px;margin-bottom:10px;
+  display:flex;gap:14px;align-items:flex-start;
+  box-shadow:var(--shadow-sm);
+}
+.ann-card--urgent{border-left:3px solid var(--red);}
+.ann-card--high{border-left:3px solid var(--gold);}
+.ann-card--normal{border-left:3px solid var(--blue);}
+.ann-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.ann-body{flex:1;}
+.ann-title{font-size:14px;font-weight:700;color:var(--text-primary);margin-bottom:4px;}
+.ann-msg{font-size:13px;color:var(--text-secondary);line-height:1.6;}
+.ann-meta{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  margin-top:8px;
+}
+.ann-date{font-size:11px;color:var(--text-muted);font-family:var(--mono);}
+
+/* ── SETTINGS ── */
+.settings-section{
+  background:var(--surface);border:1px solid var(--border-l);
+  border-radius:var(--r-md);margin-bottom:16px;overflow:hidden;
+}
+.settings-section-header{
+  padding:14px 20px;border-bottom:1px solid var(--border-l);
+  display:flex;align-items:center;gap:10px;
+}
+.settings-section-title{font-size:14px;font-weight:700;color:var(--text-primary);}
+.settings-section-icon{font-size:18px;}
+.settings-body{padding:20px;}
+.setting-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 0;border-bottom:1px solid var(--border-l);gap:20px;
+}
+.setting-row:last-child{border-bottom:none;padding-bottom:0;}
+.setting-info{flex:1;}
+.setting-label{font-size:13px;font-weight:600;color:var(--text-primary);}
+.setting-desc{font-size:12px;color:var(--text-muted);margin-top:2px;}
+.setting-control{flex-shrink:0;}
+
+/* ── WEBSITE CONTROL ── */
+.web-control-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;
+}
+.web-control-card{
+  background:var(--surface);border:1px solid var(--border-l);
+  border-radius:var(--r-md);padding:18px;
+}
+.web-control-label{
+  font-size:12px;font-weight:600;color:var(--text-muted);
+  letter-spacing:0.06em;text-transform:uppercase;margin-bottom:8px;
+}
+.web-control-value{
+  font-size:14px;color:var(--text-primary);margin-bottom:12px;
+  word-break:break-all;min-height:20px;
+}
+
+/* ── REPORT GRID ── */
+.report-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;
+}
+.report-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 0;border-bottom:1px solid var(--border-l);font-size:13px;
+}
+.report-row:last-child{border-bottom:none;}
+.report-key{color:var(--text-secondary);}
+.report-val{font-weight:700;color:var(--text-primary);font-family:var(--mono);}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes fadeOut{from{opacity:1;}to{opacity:0;}}
+
+/* ── MOBILE ── */
+.hamburger-btn{
+  display:none;background:none;border:none;
+  font-size:22px;cursor:pointer;color:var(--text-primary);
+  padding:4px;
+}
+.sidebar-overlay{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,0.5);z-index:199;
+}
+@media(max-width:768px){
+  :root{--sidebar-w:0px;}
+  .sidebar{transform:translateX(-240px);}
+  .sidebar.mobile-open{transform:translateX(0);width:240px;}
+  .sidebar-overlay.show{display:block;}
+  .topbar{left:0;}
+  .main{margin-left:0;}
+  .hamburger-btn{display:block;}
+  .form-row{grid-template-columns:1fr;}
+  .report-grid{grid-template-columns:1fr;}
+  .stats-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:480px){
+  .stats-grid{grid-template-columns:1fr;}
+  .main{padding:16px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ── LOGIN ── -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-logo">
+      <div class="login-logo-mark">AC</div>
+      <h1>Aakrit Classes</h1>
+      <p>Admin Panel · Secure Access</p>
+    </div>
+    <label class="login-label" for="pwd-input">Admin Password</label>
+    <input class="login-input" type="password" id="pwd-input" placeholder="Enter your password" autocomplete="current-password"/>
+    <button class="login-btn" id="login-btn">Sign In →</button>
+    <div class="login-error" id="login-error"></div>
+  </div>
+</div>
+
+<!-- ── APP ── -->
+<div id="app">
+
+  <!-- Sidebar Overlay (mobile) -->
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <!-- ── SIDEBAR ── -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <div class="sidebar__brand-mark">AC</div>
+      <div>
+        <div class="sidebar__brand-text">Aakrit Classes</div>
+        <div class="sidebar__brand-sub">Admin Panel</div>
+      </div>
+    </div>
+
+    <div class="sidebar__nav">
+      <div class="nav-section-label">Overview</div>
+      <button class="nav-item active" data-page="dashboard">
+        <span class="nav-icon">⊞</span> Dashboard
+      </button>
+
+      <div class="nav-section-label">Academic</div>
+      <button class="nav-item" data-page="students">
+        <span class="nav-icon">👤</span> Students
+      </button>
+      <button class="nav-item" data-page="batches">
+        <span class="nav-icon">📅</span> Batches
+      </button>
+
+      <div class="nav-section-label">Finance</div>
+      <button class="nav-item" data-page="fees">
+        <span class="nav-icon">₹</span> Fees & Payments
+      </button>
+      <button class="nav-item" data-page="reports">
+        <span class="nav-icon">📊</span> Reports
+      </button>
+
+      <div class="nav-section-label">Leads</div>
+      <button class="nav-item" data-page="enquiries">
+        <span class="nav-icon">📋</span> Enquiries
+        <span class="nav-badge" id="enq-badge" style="display:none">0</span>
+      </button>
+
+      <div class="nav-section-label">Communication</div>
+      <button class="nav-item" data-page="announcements">
+        <span class="nav-icon">📢</span> Announcements
+      </button>
+
+      <div class="nav-section-label">System</div>
+      <button class="nav-item" data-page="website">
+        <span class="nav-icon">🌐</span> Website Control
+      </button>
+      <button class="nav-item" data-page="settings">
+        <span class="nav-icon">⚙</span> Settings
+      </button>
+    </div>
+
+    <div class="sidebar__footer">
+      <div class="sidebar__user">
+        <div class="sidebar__avatar">A</div>
+        <div class="sidebar__user-info">
+          <div class="sidebar__user-name">Admin</div>
+          <div class="sidebar__user-role">Owner · Full Access</div>
+        </div>
+        <button class="logout-btn" id="logout-btn" title="Logout">⏻</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── TOPBAR ── -->
+  <header class="topbar">
+    <div class="topbar__left">
+      <button class="hamburger-btn" id="hamburger">☰</button>
+      <div>
+        <div class="topbar__title" id="page-title">Dashboard</div>
+      </div>
+    </div>
+    <div class="topbar__right">
+      <div class="topbar__date" id="topbar-date"></div>
+    </div>
+  </header>
+
+  <!-- ── MAIN ── -->
+  <main class="main">
+
+    <!-- ════════ DASHBOARD ════════ -->
+    <div class="page active" id="page-dashboard">
+      <div class="stats-grid" id="stats-grid">
+        <div class="stat-card stat-card--gold">
+          <div class="stat-icon">👥</div>
+          <div class="stat-value" id="s-students">—</div>
+          <div class="stat-label">Active Students</div>
+        </div>
+        <div class="stat-card stat-card--green">
+          <div class="stat-icon">₹</div>
+          <div class="stat-value" id="s-month">—</div>
+          <div class="stat-label">This Month Fees</div>
+        </div>
+        <div class="stat-card stat-card--red">
+          <div class="stat-icon">⚠</div>
+          <div class="stat-value" id="s-pending">—</div>
+          <div class="stat-label">Pending Fees</div>
+        </div>
+        <div class="stat-card stat-card--blue">
+          <div class="stat-icon">📋</div>
+          <div class="stat-value" id="s-enquiries">—</div>
+          <div class="stat-label">New Enquiries</div>
+        </div>
+        <div class="stat-card stat-card--orange">
+          <div class="stat-icon">📅</div>
+          <div class="stat-value" id="s-batches">—</div>
+          <div class="stat-label">Active Batches</div>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <div>
+          <div class="section-title">Quick Actions</div>
+        </div>
+      </div>
+      <div class="quick-actions" style="margin-bottom:24px;">
+        <div class="quick-card" onclick="showPage('students');setTimeout(()=>document.getElementById('add-student-btn').click(),300)">
+          <div class="quick-card-icon">➕</div>
+          <div class="quick-card-label">Add Student</div>
+        </div>
+        <div class="quick-card" onclick="showPage('fees');setTimeout(()=>document.getElementById('add-fee-btn').click(),300)">
+          <div class="quick-card-icon">💰</div>
+          <div class="quick-card-label">Record Fee</div>
+        </div>
+        <div class="quick-card" onclick="showPage('enquiries');setTimeout(()=>document.getElementById('add-enq-btn').click(),300)">
+          <div class="quick-card-icon">📝</div>
+          <div class="quick-card-label">Log Enquiry</div>
+        </div>
+        <div class="quick-card" onclick="showPage('announcements');setTimeout(()=>document.getElementById('add-ann-btn').click(),300)">
+          <div class="quick-card-icon">📢</div>
+          <div class="quick-card-label">Announcement</div>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <div><div class="section-title">Recent Enquiries</div></div>
+        <button class="btn btn-secondary btn-sm" onclick="showPage('enquiries')">View All</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>Name</th><th>Phone</th><th>Grade</th><th>Date</th><th>Status</th>
+          </tr></thead>
+          <tbody id="dash-enquiries-body">
+            <tr><td colspan="5"><div class="page-loader"><div class="loader"></div><span>Loading...</span></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ════════ STUDENTS ════════ -->
+    <div class="page" id="page-students">
+      <div class="section-header">
+        <div>
+          <div class="section-title">Student Directory</div>
+          <div class="section-sub" id="student-count">Loading...</div>
+        </div>
+        <button class="btn btn-primary" id="add-student-btn">+ Add Student</button>
+      </div>
+      <div class="table-wrap">
+        <div class="table-toolbar">
+          <div class="search-box">
+            <span>🔍</span>
+            <input type="text" id="student-search" placeholder="Search by name, phone..."/>
+          </div>
+          <select class="filter-select" id="student-status-filter">
+            <option value="">All Status</option>
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+            <option value="Left">Left</option>
+          </select>
+          <select class="filter-select" id="student-class-filter">
+            <option value="">All Classes</option>
+            <option>6th</option><option>7th</option><option>8th</option>
+            <option>9th</option><option>10th</option>
+            <option>11th Science</option><option>11th Commerce</option>
+            <option>12th Science</option><option>12th Commerce</option>
+          </select>
+        </div>
+        <table>
+          <thead><tr>
+            <th>ID</th><th>Name</th><th>Class</th><th>Board</th>
+            <th>Phone</th><th>Batch</th><th>Join Date</th><th>Status</th><th>Actions</th>
+          </tr></thead>
+          <tbody id="students-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ════════ FEES ════════ -->
+    <div class="page" id="page-fees">
+      <div class="section-header">
+        <div>
+          <div class="section-title">Fees & Payments</div>
+          <div class="section-sub" id="fees-summary">Loading...</div>
+        </div>
+        <button class="btn btn-primary" id="add-fee-btn">+ Record Payment</button>
+      </div>
+      <div class="table-wrap">
+        <div class="table-toolbar">
+          <div class="search-box">
+            <span>🔍</span>
+            <input type="text" id="fee-search" placeholder="Search student name..."/>
+          </div>
+          <select class="filter-select" id="fee-status-filter">
+            <option value="">All Status</option>
+            <option value="Paid">Paid</option>
+            <option value="Pending">Pending</option>
+            <option value="Partial">Partial</option>
+          </select>
+          <select class="filter-select" id="fee-month-filter">
+            <option value="">All Months</option>
+          </select>
+        </div>
+        <table>
+          <thead><tr>
+            <th>Fee ID</th><th>Student</th><th>Amount</th><th>Type</th>
+            <th>Month</th><th>Mode</th><th>Paid Date</th><th>Status</th><th>Actions</th>
+          </tr></thead>
+          <tbody id="fees-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ════════ ENQUIRIES ════════ -->
+    <div class="page" id="page-enquiries">
+      <div class="section-header">
+        <div>
+          <div class="section-title">Enquiry Management</div>
+          <div class="section-sub" id="enq-count">Loading...</div>
+        </div>
+        <button class="btn btn-primary" id="add-enq-btn">+ Log Enquiry</button>
+      </div>
+      <div class="table-wrap">
+        <div class="table-toolbar">
+          <div class="search-box">
+            <span>🔍</span>
+            <input type="text" id="enq-search" placeholder="Search name, phone..."/>
+          </div>
+          <select class="filter-select" id="enq-status-filter">
+            <option value="">All Status</option>
+            <option value="New">New</option>
+            <option value="Contacted">Contacted</option>
+            <option value="Visited">Visited</option>
+            <option value="Enrolled">Enrolled</option>
+            <option value="Lost">Lost</option>
+          </select>
+        </div>
+        <table>
+          <thead><tr>
+            <th>ID</th><th>Name</th><th>Phone</th><th>Grade</th>
+            <th>Source</th><th>Date</th><th>Follow Up</th><th>Status</th><th>Actions</th>
+          </tr></thead>
+          <tbody id="enquiries-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ════════ BATCHES ════════ -->
+    <div class="page" id="page-batches">
+      <div class="section-header">
+        <div><div class="section-title">Batch Management</div></div>
+        <button class="btn btn-primary" id="add-batch-btn">+ Add Batch</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>ID</th><th>Batch Name</th><th>Class</th><th>Subject</th>
+            <th>Faculty</th><th>Time</th><th>Days</th><th>Strength</th><th>Status</th><th>Actions</th>
+          </tr></thead>
+          <tbody id="batches-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ════════ ANNOUNCEMENTS ════════ -->
+    <div class="page" id="page-announcements">
+      <div class="section-header">
+        <div><div class="section-title">Announcements</div></div>
+        <button class="btn btn-primary" id="add-ann-btn">+ New Announcement</button>
+      </div>
+      <div id="announcements-list"></div>
+    </div>
+
+    <!-- ════════ WEBSITE CONTROL ════════ -->
+    <div class="page" id="page-website">
+      <div class="section-header">
+        <div>
+          <div class="section-title">Website Control Panel</div>
+          <div class="section-sub">Update key content on your public website</div>
+        </div>
+      </div>
+      <div class="web-control-grid" id="website-grid">
+        <div class="page-loader"><div class="loader"></div><span>Loading...</span></div>
+      </div>
+    </div>
+
+    <!-- ════════ REPORTS ════════ -->
+    <div class="page" id="page-reports">
+      <div class="section-header">
+        <div><div class="section-title">Reports</div></div>
+        <div style="display:flex;gap:10px;">
+          <select class="filter-select" id="report-month">
+            <option value="">All Time</option>
+          </select>
+          <button class="btn btn-secondary btn-sm" onclick="loadReports()">↻ Refresh</button>
+        </div>
+      </div>
+      <div class="report-grid">
+        <div class="card">
+          <div class="section-title" style="margin-bottom:16px;">💰 Fee Summary</div>
+          <div id="fee-report-content"><div class="page-loader"><div class="loader"></div></div></div>
+        </div>
+        <div class="card">
+          <div class="section-title" style="margin-bottom:16px;">📋 Enquiry Summary</div>
+          <div id="enq-report-content"><div class="page-loader"><div class="loader"></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════ SETTINGS ════════ -->
+    <div class="page" id="page-settings">
+      <div class="section-header">
+        <div><div class="section-title">Settings</div></div>
+        <button class="btn btn-primary" id="save-settings-btn">Save Changes</button>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-header">
+          <span class="settings-section-icon">🏫</span>
+          <div class="settings-section-title">Institute Information</div>
+        </div>
+        <div class="settings-body">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Institute Name</label>
+              <input class="form-control" id="set-name" placeholder="Aakrit Classes"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Academic Year</label>
+              <input class="form-control" id="set-year" placeholder="2025-26"/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Phone</label>
+              <input class="form-control" id="set-phone" placeholder="+91 XXXXXXXXXX"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input class="form-control" id="set-email" type="email" placeholder="admin@aakrit.in"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Address</label>
+            <input class="form-control" id="set-address" placeholder="Full address"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-header">
+          <span class="settings-section-icon">🔐</span>
+          <div class="settings-section-title">Change Admin Password</div>
+        </div>
+        <div class="settings-body">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">New Password</label>
+              <input class="form-control" id="set-pwd" type="password" placeholder="Min 8 characters"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Confirm Password</label>
+              <input class="form-control" id="set-pwd2" type="password" placeholder="Repeat password"/>
+            </div>
+          </div>
+          <button class="btn btn-danger btn-sm" id="change-pwd-btn">Update Password</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ═══ MODALS ═══ -->
+
+<!-- Student Modal -->
+<div class="modal-overlay" id="student-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="student-modal-title">Add Student</div>
+      <button class="modal-close" onclick="closeModal('student-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="s-StudentID"/>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Full Name <span>*</span></label>
+          <input class="form-control" id="s-Name" placeholder="Student's full name"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone</label>
+          <input class="form-control" id="s-Phone" placeholder="Student phone"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Parent Name</label>
+          <input class="form-control" id="s-ParentName" placeholder="Parent/Guardian name"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Parent Phone <span>*</span></label>
+          <input class="form-control" id="s-ParentPhone" placeholder="Parent phone"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Class <span>*</span></label>
+          <select class="form-control" id="s-Class">
+            <option value="">Select Class</option>
+            <option>6th</option><option>7th</option><option>8th</option>
+            <option>9th</option><option>10th</option>
+            <option>11th Science</option><option>11th Commerce</option>
+            <option>12th Science</option><option>12th Commerce</option>
+            <option>JEE</option><option>NEET</option><option>CET</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Board</label>
+          <select class="form-control" id="s-Board">
+            <option value="">Select Board</option>
+            <option>CBSE</option><option>ICSE</option><option>SSC</option><option>N/A</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Batch</label>
+          <input class="form-control" id="s-Batch" placeholder="e.g. Morning Batch A"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Status</label>
+          <select class="form-control" id="s-Status">
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+            <option value="Left">Left</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Address</label>
+        <input class="form-control" id="s-Address" placeholder="Home address"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Notes</label>
+        <textarea class="form-control" id="s-Notes" placeholder="Any additional notes..."></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('student-modal')">Cancel</button>
+      <button class="btn btn-primary" id="save-student-btn">Save Student</button>
+    </div>
+  </div>
+</div>
+
+<!-- Fee Modal -->
+<div class="modal-overlay" id="fee-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Record Fee Payment</div>
+      <button class="modal-close" onclick="closeModal('fee-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="f-FeeID"/>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Student Name <span>*</span></label>
+          <input class="form-control" id="f-StudentName" placeholder="Student name" list="student-list"/>
+          <datalist id="student-list"></datalist>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Amount (₹) <span>*</span></label>
+          <input class="form-control" id="f-Amount" type="number" placeholder="0"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Fee Type</label>
+          <select class="form-control" id="f-Type">
+            <option value="Monthly">Monthly Tuition</option>
+            <option value="Admission">Admission Fee</option>
+            <option value="Exam">Exam Fee</option>
+            <option value="Material">Study Material</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">For Month</label>
+          <input class="form-control" id="f-Month" placeholder="e.g. January 2025"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Payment Mode</label>
+          <select class="form-control" id="f-Mode">
+            <option>Cash</option><option>UPI</option>
+            <option>Bank Transfer</option><option>Cheque</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Status</label>
+          <select class="form-control" id="f-Status">
+            <option value="Paid">Paid</option>
+            <option value="Pending">Pending</option>
+            <option value="Partial">Partial</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Notes</label>
+        <input class="form-control" id="f-Notes" placeholder="e.g. Receipt no. 123"/>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('fee-modal')">Cancel</button>
+      <button class="btn btn-primary" id="save-fee-btn">Save Payment</button>
+    </div>
+  </div>
+</div>
+
+<!-- Enquiry Modal -->
+<div class="modal-overlay" id="enq-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="enq-modal-title">Log Enquiry</div>
+      <button class="modal-close" onclick="closeModal('enq-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="e-id"/>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Name <span>*</span></label>
+          <input class="form-control" id="e-Name" placeholder="Parent or student name"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone <span>*</span></label>
+          <input class="form-control" id="e-Phone" placeholder="10-digit number"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Grade / Class</label>
+          <select class="form-control" id="e-Grade">
+            <option value="">Select</option>
+            <option>6th</option><option>7th</option><option>8th</option>
+            <option>9th</option><option>10th</option>
+            <option>11th Science</option><option>11th Commerce</option>
+            <option>12th Science</option><option>12th Commerce</option>
+            <option>JEE</option><option>NEET</option><option>CET</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Board</label>
+          <select class="form-control" id="e-Board">
+            <option value="">Select</option>
+            <option>CBSE</option><option>ICSE</option><option>SSC</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Source</label>
+          <select class="form-control" id="e-Source">
+            <option>Walk-in</option><option>Website</option><option>WhatsApp</option>
+            <option>Referral</option><option>Google</option><option>Instagram</option><option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Status</label>
+          <select class="form-control" id="e-Status">
+            <option value="New">New</option>
+            <option value="Contacted">Contacted</option>
+            <option value="Visited">Visited</option>
+            <option value="Enrolled">Enrolled</option>
+            <option value="Lost">Lost</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Follow Up Date</label>
+        <input class="form-control" id="e-FollowUp" type="date"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Notes</label>
+        <textarea class="form-control" id="e-Notes" placeholder="Any remarks..."></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('enq-modal')">Cancel</button>
+      <button class="btn btn-primary" id="save-enq-btn">Save Enquiry</button>
+    </div>
+  </div>
+</div>
+
+<!-- Batch Modal -->
+<div class="modal-overlay" id="batch-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="batch-modal-title">Add Batch</div>
+      <button class="modal-close" onclick="closeModal('batch-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="b-BatchID"/>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Batch Name <span>*</span></label>
+          <input class="form-control" id="b-BatchName" placeholder="e.g. Morning Batch A"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Class</label>
+          <select class="form-control" id="b-Class">
+            <option value="">Select Class</option>
+            <option>6th–8th</option><option>9th–10th</option>
+            <option>11th Science</option><option>12th Science</option>
+            <option>11th Commerce</option><option>12th Commerce</option>
+            <option>JEE</option><option>NEET</option><option>CET</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Subject</label>
+          <input class="form-control" id="b-Subject" placeholder="e.g. Maths, Physics..."/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Faculty</label>
+          <input class="form-control" id="b-Faculty" placeholder="Teacher name"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Time</label>
+          <input class="form-control" id="b-Time" placeholder="e.g. 7:00 AM – 9:00 AM"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Days</label>
+          <input class="form-control" id="b-Days" placeholder="e.g. Mon – Sat"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Max Strength</label>
+          <input class="form-control" id="b-MaxStrength" type="number" value="20"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Current Strength</label>
+          <input class="form-control" id="b-CurrentStrength" type="number" value="0"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Status</label>
+        <select class="form-control" id="b-Status">
+          <option value="Active">Active</option>
+          <option value="Inactive">Inactive</option>
+          <option value="Full">Full</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('batch-modal')">Cancel</button>
+      <button class="btn btn-primary" id="save-batch-btn">Save Batch</button>
+    </div>
+  </div>
+</div>
+
+<!-- Announcement Modal -->
+<div class="modal-overlay" id="ann-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">New Announcement</div>
+      <button class="modal-close" onclick="closeModal('ann-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label class="form-label">Title <span>*</span></label>
+        <input class="form-control" id="a-Title" placeholder="Announcement title"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Message <span>*</span></label>
+        <textarea class="form-control" id="a-Message" placeholder="Full announcement content..." style="min-height:100px;"></textarea>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Target</label>
+          <select class="form-control" id="a-Target">
+            <option value="All">All</option>
+            <option value="Students">Students</option>
+            <option value="Parents">Parents</option>
+            <option value="Faculty">Faculty</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Priority</label>
+          <select class="form-control" id="a-Priority">
+            <option value="Normal">Normal</option>
+            <option value="High">High</option>
+            <option value="Urgent">Urgent</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Expiry Date (optional)</label>
+        <input class="form-control" id="a-Expiry" type="date"/>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('ann-modal')">Cancel</button>
+      <button class="btn btn-primary" id="save-ann-btn">Publish</button>
+    </div>
+  </div>
+</div>
+
+<!-- Website Edit Modal -->
+<div class="modal-overlay" id="web-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="web-modal-title">Edit Website Content</div>
+      <button class="modal-close" onclick="closeModal('web-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="w-key"/>
+      <div class="form-group">
+        <label class="form-label" id="w-label">Value</label>
+        <textarea class="form-control" id="w-value" style="min-height:100px;"></textarea>
+        <div class="form-hint" id="w-hint"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('web-modal')">Cancel</button>
+      <button class="btn btn-primary" id="save-web-btn">Update</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toast-container"></div>
+
+<script>
+// ══════════════════════════════════════════
+//  AAKRIT ADMIN — FRONTEND ENGINE
+//  Single-page JS | Google Apps Script
+// ══════════════════════════════════════════
+
+const SCRIPT_URL = ''; // ← PASTE YOUR DEPLOYED SCRIPT URL HERE (after deployment)
+const SESSION_KEY = 'aakrit_admin_v1';
+
+// ─── STATE ───────────────────────────────
+const state = {
+  token: null,
+  students: [],
+  fees: [],
+  enquiries: [],
+  batches: [],
+  currentPage: 'dashboard',
+};
+
+// ─── UTILS ───────────────────────────────
+function fmt(n) {
+  return Number(n || 0).toLocaleString('en-IN');
+}
+function fmtCur(n) {
+  return '₹' + fmt(n);
+}
+function today() {
+  return new Date().toLocaleDateString('en-IN', {weekday:'short',year:'numeric',month:'short',day:'numeric'});
+}
+function statusBadge(s) {
+  const map = {
+    Active:'badge-green', Paid:'badge-green', Enrolled:'badge-green',
+    Pending:'badge-gold', Partial:'badge-orange', New:'badge-blue', Contacted:'badge-blue',
+    Inactive:'badge-gray', Left:'badge-gray', Lost:'badge-red',
+    Full:'badge-orange', High:'badge-gold', Urgent:'badge-red', Normal:'badge-blue',
+    Visited:'badge-orange',
+  };
+  return `<span class="badge ${map[s]||'badge-gray'}">${s}</span>`;
+}
+function escHtml(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ─── API ─────────────────────────────────
+async function api(action, data={}) {
+  if (!SCRIPT_URL) {
+    // DEMO MODE — return sample data when URL not set
+    return demoData(action);
+  }
+  const res = await fetch(SCRIPT_URL, {
+    method: 'POST',
+    body: JSON.stringify({ action, ...data }),
+  });
+  const json = await res.json();
+  if (!json.success) throw new Error(json.error || 'Request failed');
+  return json.data;
+}
+
+// ─── DEMO DATA (shown before you connect Sheets) ─────────
+function demoData(action) {
+  const demos = {
+    getStats: {
+      activeStudents:45, monthFees:84500, pendingFees:12000,
+      newEnquiries:7, activeBatches:8, totalStudents:52,
+      recentEnquiries:[
+        {name:'Aarav Sharma',grade:'11th Science',date:'28/02/2025',status:'New',phone:'9876543210'},
+        {name:'Priya Patil',grade:'10th CBSE',date:'27/02/2025',status:'Contacted',phone:'9876543211'},
+        {name:'Rohit Kulkarni',grade:'JEE',date:'26/02/2025',status:'Visited',phone:'9876543212'},
+      ]
+    },
+    getStudents:[
+      {StudentID:'STU-001',Name:'Aarav Sharma',Class:'11th Science',Board:'CBSE',Phone:'9876543210',Batch:'Morning A',JoinDate:'01/06/2024',Status:'Active'},
+      {StudentID:'STU-002',Name:'Priya Desai',Class:'10th',Board:'SSC',Phone:'9876543211',Batch:'Evening B',JoinDate:'15/06/2024',Status:'Active'},
+    ],
+    getFees:[
+      {FeeID:'FEE-001',StudentName:'Aarav Sharma',Amount:3500,Type:'Monthly',Month:'January 2025',Mode:'Cash',PaidDate:'05/01/2025',Status:'Paid'},
+      {FeeID:'FEE-002',StudentName:'Priya Desai',Amount:3000,Type:'Monthly',Month:'February 2025',Mode:'UPI',PaidDate:'',Status:'Pending'},
+    ],
+    getEnquiries:[
+      {EnquiryID:'ENQ-001',Name:'Sunita Patil',Phone:'9876543213',Grade:'12th Science',Source:'Website',Date:'28/02/2025',FollowUpDate:'02/03/2025',Status:'New',Notes:''},
+      {EnquiryID:'ENQ-002',Name:'Vijay More',Phone:'9876543214',Grade:'10th',Source:'Walk-in',Date:'27/02/2025',FollowUpDate:'',Status:'Visited',Notes:''},
+    ],
+    getBatches:[
+      {BatchID:'BAT-001',BatchName:'Morning Batch A',Class:'11th Science',Subject:'Physics',Faculty:'Mr. Rajesh',Time:'7:00–10:00 AM',Days:'Mon–Sat',MaxStrength:20,CurrentStrength:18,Status:'Active'},
+      {BatchID:'BAT-002',BatchName:'Evening Batch B',Class:'9th–10th',Subject:'Maths',Faculty:'Mr. Santosh',Time:'6:00–8:00 PM',Days:'Mon–Fri',MaxStrength:20,CurrentStrength:15,Status:'Active'},
+    ],
+    getAnnouncements:[
+      {AnnID:'ANN-001',Title:'Unit Test on 05 March',Message:'Unit Test for 11th & 12th Science will be held on 05 March. Syllabus: Chapters 1–4.',Target:'Students',Priority:'High',Date:'28/02/2025',ExpiryDate:'05/03/2025'},
+      {AnnID:'ANN-002',Title:'Fees Due Reminder',Message:'February fees are pending for some students. Please clear dues by 5th March to avoid late charges.',Target:'Parents',Priority:'Urgent',Date:'27/02/2025',ExpiryDate:'05/03/2025'},
+    ],
+    getWebsiteData:[
+      {Key:'hero_headline',Value:'Structured Coaching. Proven Results.',UpdatedOn:'28/02/2025'},
+      {Key:'hero_subtext',Value:'6th–12th CBSE · ICSE · SSC & JEE / NEET Preparation in Dhanori, Pune.',UpdatedOn:'28/02/2025'},
+      {Key:'admissions_status',Value:'Open',UpdatedOn:'28/02/2025'},
+      {Key:'notice_bar',Value:'Admissions open for 2025-26 batch!',UpdatedOn:'28/02/2025'},
+      {Key:'whatsapp_number',Value:'918530692113',UpdatedOn:'28/02/2025'},
+      {Key:'google_rating',Value:'4.3',UpdatedOn:'28/02/2025'},
+    ],
+    getSettings:[
+      {Key:'institute_name',Value:'Aakrit Classes'},
+      {Key:'address',Value:'Dhanori, Pune, Maharashtra 411015'},
+      {Key:'phone',Value:'+91 85306 92113'},
+      {Key:'email',Value:''},
+      {Key:'academic_year',Value:'2025-26'},
+    ],
+    login:{ token: SESSION_KEY, institute: 'Aakrit Classes' },
+    addStudent:{id:'STU-NEW'}, addFee:{id:'FEE-NEW'},
+    addEnquiry:{id:'ENQ-NEW'}, addBatch:{id:'BAT-NEW'},
+    addAnnouncement:{id:'ANN-NEW'},
+    updateStudent:{updated:true}, updateFee:{updated:true},
+    updateEnquiryStatus:{updated:true}, updateBatch:{updated:true},
+    deleteStudent:{deleted:true}, deleteEnquiry:{deleted:true}, deleteBatch:{deleted:true},
+    deleteAnnouncement:{deleted:true},
+    updateWebsiteData:{updated:true}, updateSettings:{updated:true},
+    changePassword:{updated:true},
+    getFeeReport:{totalPaid:84500,totalPending:12000,paid:[],pending:[],count:47},
+    getEnquiryReport:{total:29,byStatus:{New:7,Contacted:8,Visited:5,Enrolled:6,Lost:3},bySource:{Website:9,'Walk-in':12,WhatsApp:5,Referral:3}},
+  };
+  return Promise.resolve(demos[action] || {});
+}
+
+// ─── TOAST ───────────────────────────────
+function toast(msg, type='success') {
+  const c = document.getElementById('toast-container');
+  const t = document.createElement('div');
+  t.className = `toast toast--${type}`;
+  t.innerHTML = `<span class="toast-icon">${type==='success'?'✓':'⚠'}</span>${escHtml(msg)}`;
+  c.appendChild(t);
+  setTimeout(()=>t.remove(), 3500);
+}
+
+// ─── MODAL ───────────────────────────────
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+}
+document.querySelectorAll('.modal-overlay').forEach(m => {
+  m.addEventListener('click', e => { if(e.target===m) m.classList.remove('open'); });
+});
+
+// ─── NAV ─────────────────────────────────
+function showPage(name) {
+  state.currentPage = name;
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  document.querySelector(`[data-page="${name}"]`)?.classList.add('active');
+  const titles = {
+    dashboard:'Dashboard', students:'Students', fees:'Fees & Payments',
+    enquiries:'Enquiries', batches:'Batches', announcements:'Announcements',
+    website:'Website Control', reports:'Reports', settings:'Settings',
+  };
+  document.getElementById('page-title').textContent = titles[name] || name;
+
+  // Load data
+  const loaders = {
+    dashboard: loadDashboard,
+    students:  loadStudents,
+    fees:      loadFees,
+    enquiries: loadEnquiries,
+    batches:   loadBatches,
+    announcements: loadAnnouncements,
+    website:   loadWebsite,
+    reports:   loadReports,
+    settings:  loadSettings,
+  };
+  if(loaders[name]) loaders[name]();
+
+  // Close mobile sidebar
+  document.getElementById('sidebar').classList.remove('mobile-open');
+  document.getElementById('sidebar-overlay').classList.remove('show');
+}
+
+document.querySelectorAll('.nav-item').forEach(btn => {
+  btn.addEventListener('click', ()=> showPage(btn.dataset.page));
+});
+
+// ─── LOGIN ───────────────────────────────
+async function handleLogin() {
+  const pwd = document.getElementById('pwd-input').value;
+  const btn = document.getElementById('login-btn');
+  const err = document.getElementById('login-error');
+  if(!pwd) { err.textContent='Please enter password.'; err.classList.add('show'); return; }
+
+  btn.textContent='Signing in…'; btn.disabled=true;
+  try {
+    const data = await api('login', { password: pwd });
+    state.token = data.token;
+    sessionStorage.setItem(SESSION_KEY, '1');
+    document.getElementById('login-screen').classList.add('hide');
+    setTimeout(()=>{ document.getElementById('login-screen').style.display='none'; },300);
+    document.getElementById('app').classList.add('show');
+    loadDashboard();
+  } catch(e) {
+    err.textContent = e.message || 'Login failed.';
+    err.classList.add('show');
+  }
+  btn.textContent='Sign In →'; btn.disabled=false;
+}
+
+document.getElementById('login-btn').addEventListener('click', handleLogin);
+document.getElementById('pwd-input').addEventListener('keydown', e=> { if(e.key==='Enter') handleLogin(); });
+
+// Auto-login if session exists (demo mode)
+if(sessionStorage.getItem(SESSION_KEY) || !SCRIPT_URL) {
+  state.token = SESSION_KEY;
+  document.getElementById('login-screen').style.display='none';
+  document.getElementById('app').classList.add('show');
+}
+
+// Logout
+document.getElementById('logout-btn').addEventListener('click', ()=>{
+  sessionStorage.removeItem(SESSION_KEY);
+  location.reload();
+});
+
+// Hamburger
+document.getElementById('hamburger').addEventListener('click', ()=>{
+  document.getElementById('sidebar').classList.toggle('mobile-open');
+  document.getElementById('sidebar-overlay').classList.toggle('show');
+});
+document.getElementById('sidebar-overlay').addEventListener('click', ()=>{
+  document.getElementById('sidebar').classList.remove('mobile-open');
+  document.getElementById('sidebar-overlay').classList.remove('show');
+});
+
+// Date
+document.getElementById('topbar-date').textContent = today();
+
+// ─── DASHBOARD ───────────────────────────
+async function loadDashboard() {
+  try {
+    const s = await api('getStats');
+    document.getElementById('s-students').textContent  = s.activeStudents;
+    document.getElementById('s-month').textContent     = fmtCur(s.monthFees);
+    document.getElementById('s-pending').textContent   = fmtCur(s.pendingFees);
+    document.getElementById('s-enquiries').textContent = s.newEnquiries;
+    document.getElementById('s-batches').textContent   = s.activeBatches;
+
+    // Badge
+    if(s.newEnquiries>0){
+      const b = document.getElementById('enq-badge');
+      b.style.display=''; b.textContent=s.newEnquiries;
+    }
+
+    // Recent enquiries
+    const tbody = document.getElementById('dash-enquiries-body');
+    if(!s.recentEnquiries?.length){
+      tbody.innerHTML=`<tr><td colspan="5"><div class="empty-state"><div class="empty-icon">📋</div><div class="empty-text">No enquiries yet</div></div></td></tr>`;
+    } else {
+      tbody.innerHTML = s.recentEnquiries.map(e=>`
+        <tr>
+          <td><b>${escHtml(e.name)}</b></td>
+          <td>${escHtml(e.phone)}</td>
+          <td>${escHtml(e.grade)}</td>
+          <td><span style="font-family:var(--mono);font-size:12px;">${escHtml(e.date)}</span></td>
+          <td>${statusBadge(e.status)}</td>
+        </tr>`).join('');
+    }
+  } catch(e) { toast('Failed to load dashboard: '+e.message,'error'); }
+}
+
+// ─── STUDENTS ────────────────────────────
+async function loadStudents() {
+  try {
+    state.students = await api('getStudents');
+    renderStudents();
+    // Populate datalist for fees
+    const dl = document.getElementById('student-list');
+    dl.innerHTML = state.students.map(s=>`<option value="${escHtml(s.Name)}">`).join('');
+  } catch(e) { toast('Failed to load students: '+e.message,'error'); }
+}
+
+function renderStudents() {
+  const search = document.getElementById('student-search').value.toLowerCase();
+  const statusF = document.getElementById('student-status-filter').value;
+  const classF  = document.getElementById('student-class-filter').value;
+  let rows = state.students.filter(s=>{
+    const matchS = !search || s.Name?.toLowerCase().includes(search) || s.Phone?.includes(search);
+    const matchSt = !statusF || s.Status===statusF;
+    const matchC  = !classF  || s.Class===classF;
+    return matchS && matchSt && matchC;
+  });
+  document.getElementById('student-count').textContent = `${rows.length} of ${state.students.length} students`;
+  const tbody = document.getElementById('students-body');
+  if(!rows.length){
+    tbody.innerHTML=`<tr><td colspan="9"><div class="empty-state"><div class="empty-icon">👤</div><div class="empty-text">No students found</div><div class="empty-sub">Add your first student or adjust filters</div></div></td></tr>`;
+    return;
+  }
+  tbody.innerHTML = rows.map(s=>`
+    <tr>
+      <td><span style="font-family:var(--mono);font-size:11px;color:var(--text-muted);">${escHtml(s.StudentID)}</span></td>
+      <td><b>${escHtml(s.Name)}</b><br><span style="font-size:11px;color:var(--text-muted);">${escHtml(s.ParentPhone||'')}</span></td>
+      <td>${escHtml(s.Class)}</td>
+      <td>${escHtml(s.Board)}</td>
+      <td>${escHtml(s.Phone)}</td>
+      <td>${escHtml(s.Batch)}</td>
+      <td><span style="font-family:var(--mono);font-size:11px;">${escHtml(s.JoinDate)}</span></td>
+      <td>${statusBadge(s.Status)}</td>
+      <td>
+        <button class="btn btn-secondary btn-sm" onclick='editStudent(${JSON.stringify(s)})'>Edit</button>
+        <button class="btn btn-danger btn-sm" onclick="deleteStudent('${s.StudentID}')">Del</button>
+      </td>
+    </tr>`).join('');
+}
+
+['student-search','student-status-filter','student-class-filter'].forEach(id=>{
+  document.getElementById(id).addEventListener('input', renderStudents);
+});
+
+document.getElementById('add-student-btn').addEventListener('click', ()=>{
+  document.getElementById('student-modal-title').textContent='Add Student';
+  ['StudentID','Name','Phone','ParentName','ParentPhone','Address','Notes'].forEach(f=>
+    document.getElementById('s-'+f).value='');
+  ['Class','Board','Status'].forEach(f=>{
+    const el=document.getElementById('s-'+f);
+    if(el.tagName==='SELECT') el.selectedIndex=0;
+    else el.value='';
+  });
+  document.getElementById('s-Status').value='Active';
+  openModal('student-modal');
+});
+
+function editStudent(s) {
+  document.getElementById('student-modal-title').textContent='Edit Student';
+  ['StudentID','Name','Phone','ParentName','ParentPhone','Class','Board','Status','Batch','Address','Notes'].forEach(f=>{
+    const el=document.getElementById('s-'+f);
+    if(el) el.value=s[f]||'';
+  });
+  openModal('student-modal');
+}
+
+document.getElementById('save-student-btn').addEventListener('click', async ()=>{
+  const id  = document.getElementById('s-StudentID').value;
+  const name = document.getElementById('s-Name').value.trim();
+  if(!name){ toast('Name is required','error'); return; }
+  try {
+    if(id) {
+      const data={StudentID:id};
+      ['Name','Phone','ParentName','ParentPhone','Class','Board','Stream','Batch','JoinDate','Status','Address','Notes'].forEach(f=>{
+        data[f]=document.getElementById('s-'+f)?.value||'';
+      });
+      await api('updateStudent', data);
+      toast('Student updated');
+    } else {
+      await api('addStudent',{
+        name, phone:document.getElementById('s-Phone').value,
+        parentName:document.getElementById('s-ParentName').value,
+        parentPhone:document.getElementById('s-ParentPhone').value,
+        class:document.getElementById('s-Class').value,
+        board:document.getElementById('s-Board').value,
+        batch:document.getElementById('s-Batch').value,
+        status:document.getElementById('s-Status').value,
+        address:document.getElementById('s-Address').value,
+        notes:document.getElementById('s-Notes').value,
+      });
+      toast('Student added successfully');
+    }
+    closeModal('student-modal');
+    loadStudents();
+  } catch(e){ toast(e.message,'error'); }
+});
+
+async function deleteStudent(id) {
+  if(!confirm('Delete this student? This cannot be undone.')) return;
+  try { await api('deleteStudent',{id}); toast('Student deleted'); loadStudents(); }
+  catch(e){ toast(e.message,'error'); }
+}
+
+// ─── FEES ────────────────────────────────
+async function loadFees() {
+  try {
+    state.fees = await api('getFees');
+    // Populate month filter
+    const months = [...new Set(state.fees.map(f=>f.Month).filter(Boolean))];
+    const sel = document.getElementById('fee-month-filter');
+    sel.innerHTML = '<option value="">All Months</option>' +
+      months.map(m=>`<option value="${escHtml(m)}">${escHtml(m)}</option>`).join('');
+    renderFees();
+  } catch(e){ toast('Failed to load fees: '+e.message,'error'); }
+}
+
+function renderFees() {
+  const search  = document.getElementById('fee-search').value.toLowerCase();
+  const statusF = document.getElementById('fee-status-filter').value;
+  const monthF  = document.getElementById('fee-month-filter').value;
+  let rows = state.fees.filter(f=>{
+    const matchS = !search || f.StudentName?.toLowerCase().includes(search);
+    const matchSt = !statusF || f.Status===statusF;
+    const matchM  = !monthF  || f.Month===monthF;
+    return matchS && matchSt && matchM;
+  });
+  const totalPaid    = rows.filter(f=>f.Status==='Paid').reduce((s,f)=>s+(Number(f.Amount)||0),0);
+  const totalPending = rows.filter(f=>f.Status==='Pending').reduce((s,f)=>s+(Number(f.Amount)||0),0);
+  document.getElementById('fees-summary').textContent =
+    `Paid: ${fmtCur(totalPaid)} · Pending: ${fmtCur(totalPending)} · ${rows.length} records`;
+  const tbody = document.getElementById('fees-body');
+  if(!rows.length){
+    tbody.innerHTML=`<tr><td colspan="9"><div class="empty-state"><div class="empty-icon">₹</div><div class="empty-text">No fee records found</div></div></td></tr>`;
+    return;
+  }
+  tbody.innerHTML = rows.map(f=>`
+    <tr>
+      <td><span style="font-family:var(--mono);font-size:11px;color:var(--text-muted);">${escHtml(f.FeeID)}</span></td>
+      <td><b>${escHtml(f.StudentName)}</b></td>
+      <td><b style="font-family:var(--mono);">${fmtCur(f.Amount)}</b></td>
+      <td>${escHtml(f.Type)}</td>
+      <td>${escHtml(f.Month)}</td>
+      <td>${escHtml(f.Mode)}</td>
+      <td><span style="font-family:var(--mono);font-size:11px;">${escHtml(f.PaidDate)}</span></td>
+      <td>${statusBadge(f.Status)}</td>
+      <td><button class="btn btn-secondary btn-sm" onclick='editFee(${JSON.stringify(f)})'>Edit</button></td>
+    </tr>`).join('');
+}
+
+['fee-search','fee-status-filter','fee-month-filter'].forEach(id=>{
+  document.getElementById(id).addEventListener('change', renderFees);
+  document.getElementById(id).addEventListener('input', renderFees);
+});
+
+document.getElementById('add-fee-btn').addEventListener('click', ()=>{
+  ['FeeID','StudentName','Amount','Notes'].forEach(f=>
+    document.getElementById('f-'+f).value='');
+  document.getElementById('f-Type').value='Monthly';
+  document.getElementById('f-Mode').value='Cash';
+  document.getElementById('f-Status').value='Paid';
+  openModal('fee-modal');
+});
+
+function editFee(f) {
+  ['FeeID','StudentName','Amount','Type','Month','Mode','Status','Notes'].forEach(key=>{
+    const el=document.getElementById('f-'+key);
+    if(el) el.value=f[key]||'';
+  });
+  openModal('fee-modal');
+}
+
+document.getElementById('save-fee-btn').addEventListener('click', async ()=>{
+  const id   = document.getElementById('f-FeeID').value;
+  const name = document.getElementById('f-StudentName').value.trim();
+  const amt  = document.getElementById('f-Amount').value;
+  if(!name||!amt){ toast('Student name and amount required','error'); return; }
+  try {
+    if(id) {
+      await api('updateFee',{
+        FeeID:id, StudentID:'', StudentName:name,
+        Amount:amt, Type:document.getElementById('f-Type').value,
+        Month:document.getElementById('f-Month').value,
+        PaidDate:'', Mode:document.getElementById('f-Mode').value,
+        Status:document.getElementById('f-Status').value,
+        Notes:document.getElementById('f-Notes').value,
+      });
+      toast('Fee record updated');
+    } else {
+      await api('addFee',{
+        studentName:name, amount:amt,
+        type:document.getElementById('f-Type').value,
+        month:document.getElementById('f-Month').value,
+        mode:document.getElementById('f-Mode').value,
+        status:document.getElementById('f-Status').value,
+        notes:document.getElementById('f-Notes').value,
+      });
+      toast('Payment recorded');
+    }
+    closeModal('fee-modal');
+    loadFees();
+  } catch(e){ toast(e.message,'error'); }
+});
+
+// ─── ENQUIRIES ───────────────────────────
+async function loadEnquiries() {
+  try {
+    state.enquiries = await api('getEnquiries');
+    renderEnquiries();
+  } catch(e){ toast('Failed to load enquiries: '+e.message,'error'); }
+}
+
+function renderEnquiries() {
+  const search  = document.getElementById('enq-search').value.toLowerCase();
+  const statusF = document.getElementById('enq-status-filter').value;
+  let rows = state.enquiries.filter(e=>{
+    const matchS = !search || e.Name?.toLowerCase().includes(search) || e.Phone?.includes(search);
+    const matchSt = !statusF || e.Status===statusF;
+    return matchS && matchSt;
+  });
+  document.getElementById('enq-count').textContent =
+    `${rows.length} enquiries · ${state.enquiries.filter(e=>e.Status==='New').length} new`;
+  const tbody = document.getElementById('enquiries-body');
+  if(!rows.length){
+    tbody.innerHTML=`<tr><td colspan="9"><div class="empty-state"><div class="empty-icon">📋</div><div class="empty-text">No enquiries found</div></div></td></tr>`;
+    return;
+  }
+  tbody.innerHTML = rows.map(e=>`
+    <tr>
+      <td><span style="font-family:var(--mono);font-size:11px;color:var(--text-muted);">${escHtml(e.EnquiryID)}</span></td>
+      <td><b>${escHtml(e.Name)}</b></td>
+      <td><a href="tel:${escHtml(e.Phone)}" style="color:var(--blue);font-family:var(--mono);font-size:12px;">${escHtml(e.Phone)}</a></td>
+      <td>${escHtml(e.Grade)}</td>
+      <td><span class="badge badge-gray">${escHtml(e.Source)}</span></td>
+      <td><span style="font-family:var(--mono);font-size:11px;">${escHtml(e.Date)}</span></td>
+      <td><span style="font-family:var(--mono);font-size:11px;${e.FollowUpDate?'color:var(--orange);':''}">${escHtml(e.FollowUpDate)||'—'}</span></td>
+      <td>${statusBadge(e.Status)}</td>
+      <td>
+        <button class="btn btn-secondary btn-sm" onclick='editEnquiry(${JSON.stringify(e)})'>Edit</button>
+        <button class="btn btn-danger btn-sm" onclick="deleteEnquiry('${e.EnquiryID}')">Del</button>
+      </td>
+    </tr>`).join('');
+}
+
+['enq-search','enq-status-filter'].forEach(id=>{
+  document.getElementById(id).addEventListener('input', renderEnquiries);
+});
+
+document.getElementById('add-enq-btn').addEventListener('click', ()=>{
+  document.getElementById('enq-modal-title').textContent='Log Enquiry';
+  document.getElementById('e-id').value='';
+  ['Name','Phone','Notes'].forEach(f=>document.getElementById('e-'+f).value='');
+  ['Grade','Board','Source','Status'].forEach(f=>{
+    const el=document.getElementById('e-'+f);
+    if(el.tagName==='SELECT') el.selectedIndex=0; else el.value='';
+  });
+  document.getElementById('e-Status').value='New';
+  openModal('enq-modal');
+});
+
+function editEnquiry(e) {
+  document.getElementById('enq-modal-title').textContent='Edit Enquiry';
+  document.getElementById('e-id').value=e.EnquiryID;
+  document.getElementById('e-Name').value=e.Name||'';
+  document.getElementById('e-Phone').value=e.Phone||'';
+  document.getElementById('e-Grade').value=e.Grade||'';
+  document.getElementById('e-Board').value=e.Board||'';
+  document.getElementById('e-Source').value=e.Source||'Walk-in';
+  document.getElementById('e-Status').value=e.Status||'New';
+  document.getElementById('e-Notes').value=e.Notes||'';
+  openModal('enq-modal');
+}
+
+document.getElementById('save-enq-btn').addEventListener('click', async ()=>{
+  const id   = document.getElementById('e-id').value;
+  const name = document.getElementById('e-Name').value.trim();
+  const phone= document.getElementById('e-Phone').value.trim();
+  if(!name||!phone){ toast('Name and phone required','error'); return; }
+  try {
+    if(id) {
+      await api('updateEnquiryStatus',{
+        id, status:document.getElementById('e-Status').value,
+        followUpDate:document.getElementById('e-FollowUp').value,
+        notes:document.getElementById('e-Notes').value,
+      });
+      toast('Enquiry updated');
+    } else {
+      await api('addEnquiry',{
+        name, phone,
+        grade:document.getElementById('e-Grade').value,
+        board:document.getElementById('e-Board').value,
+        source:document.getElementById('e-Source').value,
+        status:document.getElementById('e-Status').value,
+        followUpDate:document.getElementById('e-FollowUp').value,
+        notes:document.getElementById('e-Notes').value,
+      });
+      toast('Enquiry logged');
+    }
+    closeModal('enq-modal');
+    loadEnquiries();
+  } catch(e){ toast(e.message,'error'); }
+});
+
+async function deleteEnquiry(id) {
+  if(!confirm('Delete this enquiry?')) return;
+  try { await api('deleteEnquiry',{id}); toast('Enquiry deleted'); loadEnquiries(); }
+  catch(e){ toast(e.message,'error'); }
+}
+
+// ─── BATCHES ─────────────────────────────
+async function loadBatches() {
+  try {
+    state.batches = await api('getBatches');
+    renderBatches();
+  } catch(e){ toast('Failed to load batches','error'); }
+}
+
+function renderBatches() {
+  const tbody = document.getElementById('batches-body');
+  if(!state.batches.length){
+    tbody.innerHTML=`<tr><td colspan="10"><div class="empty-state"><div class="empty-icon">📅</div><div class="empty-text">No batches yet</div></div></td></tr>`;
+    return;
+  }
+  tbody.innerHTML = state.batches.map(b=>{
+    const pct = b.MaxStrength>0 ? Math.round((b.CurrentStrength/b.MaxStrength)*100) : 0;
+    return `<tr>
+      <td><span style="font-family:var(--mono);font-size:11px;color:var(--text-muted);">${escHtml(b.BatchID)}</span></td>
+      <td><b>${escHtml(b.BatchName)}</b></td>
+      <td>${escHtml(b.Class)}</td>
+      <td>${escHtml(b.Subject)}</td>
+      <td>${escHtml(b.Faculty)}</td>
+      <td><span style="font-family:var(--mono);font-size:12px;">${escHtml(b.Time)}</span></td>
+      <td>${escHtml(b.Days)}</td>
+      <td>
+        <span style="font-family:var(--mono);">${b.CurrentStrength}/${b.MaxStrength}</span>
+        <div style="height:4px;background:#eee;border-radius:2px;margin-top:4px;width:80px;">
+          <div style="height:4px;background:${pct>=90?'var(--red)':pct>=70?'var(--gold)':'var(--green)'};border-radius:2px;width:${pct}%;"></div>
+        </div>
+      </td>
+      <td>${statusBadge(b.Status)}</td>
+      <td>
+        <button class="btn btn-secondary btn-sm" onclick='editBatch(${JSON.stringify(b)})'>Edit</button>
+        <button class="btn btn-danger btn-sm" onclick="deleteBatch('${b.BatchID}')">Del</button>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+document.getElementById('add-batch-btn').addEventListener('click', ()=>{
+  document.getElementById('batch-modal-title').textContent='Add Batch';
+  document.getElementById('b-BatchID').value='';
+  ['BatchName','Subject','Faculty','Time','Days'].forEach(f=>document.getElementById('b-'+f).value='');
+  document.getElementById('b-Class').value='';
+  document.getElementById('b-MaxStrength').value=20;
+  document.getElementById('b-CurrentStrength').value=0;
+  document.getElementById('b-Status').value='Active';
+  openModal('batch-modal');
+});
+
+function editBatch(b) {
+  document.getElementById('batch-modal-title').textContent='Edit Batch';
+  ['BatchID','BatchName','Class','Subject','Faculty','Time','Days','MaxStrength','CurrentStrength','Status'].forEach(f=>{
+    const el=document.getElementById('b-'+f); if(el) el.value=b[f]||'';
+  });
+  openModal('batch-modal');
+}
+
+document.getElementById('save-batch-btn').addEventListener('click', async ()=>{
+  const id   = document.getElementById('b-BatchID').value;
+  const name = document.getElementById('b-BatchName').value.trim();
+  if(!name){ toast('Batch name required','error'); return; }
+  try {
+    if(id){
+      await api('updateBatch',{
+        BatchID:id, BatchName:name,
+        Class:document.getElementById('b-Class').value,
+        Subject:document.getElementById('b-Subject').value,
+        Faculty:document.getElementById('b-Faculty').value,
+        Time:document.getElementById('b-Time').value,
+        Days:document.getElementById('b-Days').value,
+        MaxStrength:document.getElementById('b-MaxStrength').value,
+        CurrentStrength:document.getElementById('b-CurrentStrength').value,
+        Status:document.getElementById('b-Status').value,
+      });
+      toast('Batch updated');
+    } else {
+      await api('addBatch',{
+        batchName:name,
+        class:document.getElementById('b-Class').value,
+        subject:document.getElementById('b-Subject').value,
+        faculty:document.getElementById('b-Faculty').value,
+        time:document.getElementById('b-Time').value,
+        days:document.getElementById('b-Days').value,
+        maxStrength:document.getElementById('b-MaxStrength').value,
+        currentStrength:document.getElementById('b-CurrentStrength').value,
+        status:document.getElementById('b-Status').value,
+      });
+      toast('Batch added');
+    }
+    closeModal('batch-modal');
+    loadBatches();
+  } catch(e){ toast(e.message,'error'); }
+});
+
+async function deleteBatch(id){
+  if(!confirm('Delete this batch?')) return;
+  try { await api('deleteBatch',{id}); toast('Batch deleted'); loadBatches(); }
+  catch(e){ toast(e.message,'error'); }
+}
+
+// ─── ANNOUNCEMENTS ───────────────────────
+async function loadAnnouncements() {
+  try {
+    const anns = await api('getAnnouncements');
+    const container = document.getElementById('announcements-list');
+    if(!anns.length){
+      container.innerHTML=`<div class="empty-state"><div class="empty-icon">📢</div><div class="empty-text">No announcements yet</div><div class="empty-sub">Create your first announcement above</div></div>`;
+      return;
+    }
+    container.innerHTML = anns.reverse().map(a=>`
+      <div class="ann-card ann-card--${(a.Priority||'Normal').toLowerCase()}">
+        <div class="ann-icon">${a.Priority==='Urgent'?'🚨':a.Priority==='High'?'⚠️':'📢'}</div>
+        <div class="ann-body">
+          <div class="ann-title">${escHtml(a.Title)}</div>
+          <div class="ann-msg">${escHtml(a.Message)}</div>
+          <div class="ann-meta">
+            ${statusBadge(a.Priority)}
+            <span class="badge badge-gray">→ ${escHtml(a.Target)}</span>
+            <span class="ann-date">${escHtml(a.Date)}</span>
+            ${a.ExpiryDate?`<span class="ann-date">Expires: ${escHtml(a.ExpiryDate)}</span>`:''}
+          </div>
+        </div>
+        <button class="btn btn-danger btn-sm btn-icon" onclick="deleteAnn('${a.AnnID}')">🗑</button>
+      </div>`).join('');
+  } catch(e){ toast('Failed to load announcements','error'); }
+}
+
+document.getElementById('add-ann-btn').addEventListener('click', ()=>{
+  ['Title','Message'].forEach(f=>document.getElementById('a-'+f).value='');
+  document.getElementById('a-Target').value='All';
+  document.getElementById('a-Priority').value='Normal';
+  document.getElementById('a-Expiry').value='';
+  openModal('ann-modal');
+});
+
+document.getElementById('save-ann-btn').addEventListener('click', async ()=>{
+  const title = document.getElementById('a-Title').value.trim();
+  const msg   = document.getElementById('a-Message').value.trim();
+  if(!title||!msg){ toast('Title and message required','error'); return; }
+  try {
+    await api('addAnnouncement',{
+      title, message:msg,
+      target:document.getElementById('a-Target').value,
+      priority:document.getElementById('a-Priority').value,
+      expiryDate:document.getElementById('a-Expiry').value,
+    });
+    toast('Announcement published');
+    closeModal('ann-modal');
+    loadAnnouncements();
+  } catch(e){ toast(e.message,'error'); }
+});
+
+async function deleteAnn(id){
+  if(!confirm('Delete this announcement?')) return;
+  try { await api('deleteAnnouncement',{id}); toast('Deleted'); loadAnnouncements(); }
+  catch(e){ toast(e.message,'error'); }
+}
+
+// ─── WEBSITE CONTROL ─────────────────────
+const WEB_META = {
+  hero_headline:    { label:'Hero Headline', hint:'Main heading shown on homepage hero section' },
+  hero_subtext:     { label:'Hero Subtext', hint:'Subtitle below the main heading' },
+  admissions_status:{ label:'Admissions Status', hint:'Set to "Open" or "Closed"' },
+  notice_bar:       { label:'Notice Bar Text', hint:'Scrolling notice shown at top of website' },
+  whatsapp_number:  { label:'WhatsApp Number', hint:'Number for WhatsApp button (with country code, no +)' },
+  google_rating:    { label:'Google Rating', hint:'Your current Google Maps rating (e.g. 4.3)' },
+};
+
+async function loadWebsite() {
+  try {
+    const data = await api('getWebsiteData');
+    const grid = document.getElementById('website-grid');
+
+    // Merge with defaults
+    const existing = {};
+    data.forEach(d => existing[d.Key]=d);
+
+    const allKeys = Object.keys(WEB_META);
+    // Also show any keys from sheet not in meta
+    data.forEach(d=>{ if(!WEB_META[d.Key]) allKeys.push(d.Key); });
+
+    grid.innerHTML = [...new Set(allKeys)].map(key=>{
+      const meta  = WEB_META[key] || { label: key, hint:'' };
+      const row   = existing[key] || {};
+      const val   = row.Value || '';
+      const upd   = row.UpdatedOn || '';
+      return `<div class="web-control-card">
+        <div class="web-control-label">${escHtml(meta.label)}</div>
+        <div class="web-control-value">${escHtml(val)||'<span style="color:var(--text-muted);font-style:italic;">Not set</span>'}</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-size:11px;color:var(--text-muted);font-family:var(--mono);">${upd?'Updated: '+upd:''}</span>
+          <button class="btn btn-secondary btn-sm" onclick="openWebEdit('${escHtml(key)}','${escHtml(meta.label)}','${escHtml(meta.hint||'')}','${escHtml(val).replace(/'/g,"\\'")}')">Edit</button>
+        </div>
+      </div>`;
+    }).join('');
+  } catch(e){ toast('Failed to load website data','error'); }
+}
+
+function openWebEdit(key, label, hint, val) {
+  document.getElementById('web-modal-title').textContent = 'Edit: '+label;
+  document.getElementById('w-key').value = key;
+  document.getElementById('w-label').textContent = label;
+  document.getElementById('w-value').value = val;
+  document.getElementById('w-hint').textContent = hint;
+  openModal('web-modal');
+}
+
+document.getElementById('save-web-btn').addEventListener('click', async ()=>{
+  const key = document.getElementById('w-key').value;
+  const val = document.getElementById('w-value').value;
+  try {
+    await api('updateWebsiteData',{key,value:val});
+    toast('Website content updated');
+    closeModal('web-modal');
+    loadWebsite();
+  } catch(e){ toast(e.message,'error'); }
+});
+
+// ─── REPORTS ─────────────────────────────
+async function loadReports() {
+  const month = document.getElementById('report-month')?.value || '';
+  try {
+    const [feeR, enqR] = await Promise.all([
+      api('getFeeReport',{month}),
+      api('getEnquiryReport'),
+    ]);
+
+    document.getElementById('fee-report-content').innerHTML = `
+      <div class="report-row"><span class="report-key">Total Collected</span><span class="report-val" style="color:var(--green);">${fmtCur(feeR.totalPaid)}</span></div>
+      <div class="report-row"><span class="report-key">Total Pending</span><span class="report-val" style="color:var(--red);">${fmtCur(feeR.totalPending)}</span></div>
+      <div class="report-row"><span class="report-key">Total Records</span><span class="report-val">${feeR.count}</span></div>
+      <div class="report-row"><span class="report-key">Paid Records</span><span class="report-val">${feeR.paid?.length||0}</span></div>
+      <div class="report-row"><span class="report-key">Pending Records</span><span class="report-val">${feeR.pending?.length||0}</span></div>
+    `;
+
+    const statusRows = Object.entries(enqR.byStatus||{}).map(([k,v])=>
+      `<div class="report-row"><span class="report-key">${k}</span><span class="report-val">${v}</span></div>`).join('');
+    const sourceRows = Object.entries(enqR.bySource||{}).map(([k,v])=>
+      `<div class="report-row"><span class="report-key">${k}</span><span class="report-val">${v}</span></div>`).join('');
+
+    document.getElementById('enq-report-content').innerHTML = `
+      <div class="report-row"><span class="report-key">Total Enquiries</span><span class="report-val">${enqR.total}</span></div>
+      <div style="font-size:11px;font-weight:600;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase;margin:12px 0 4px;">By Status</div>
+      ${statusRows}
+      <div style="font-size:11px;font-weight:600;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase;margin:12px 0 4px;">By Source</div>
+      ${sourceRows}
+    `;
+  } catch(e){ toast('Failed to load reports','error'); }
+}
+
+// ─── SETTINGS ────────────────────────────
+async function loadSettings() {
+  try {
+    const settings = await api('getSettings');
+    const map = {};
+    settings.forEach(s=>map[s.Key]=s.Value);
+    document.getElementById('set-name').value    = map.institute_name||'Aakrit Classes';
+    document.getElementById('set-year').value    = map.academic_year||'2025-26';
+    document.getElementById('set-phone').value   = map.phone||'';
+    document.getElementById('set-email').value   = map.email||'';
+    document.getElementById('set-address').value = map.address||'';
+  } catch(e){ toast('Failed to load settings','error'); }
+}
+
+document.getElementById('save-settings-btn').addEventListener('click', async ()=>{
+  const pairs = [
+    ['institute_name', document.getElementById('set-name').value],
+    ['academic_year',  document.getElementById('set-year').value],
+    ['phone',          document.getElementById('set-phone').value],
+    ['email',          document.getElementById('set-email').value],
+    ['address',        document.getElementById('set-address').value],
+  ];
+  try {
+    await Promise.all(pairs.map(([key,value])=>api('updateSettings',{key,value})));
+    toast('Settings saved');
+  } catch(e){ toast(e.message,'error'); }
+});
+
+document.getElementById('change-pwd-btn').addEventListener('click', async ()=>{
+  const p1 = document.getElementById('set-pwd').value;
+  const p2 = document.getElementById('set-pwd2').value;
+  if(!p1||!p2){ toast('Enter both password fields','error'); return; }
+  if(p1!==p2){ toast('Passwords do not match','error'); return; }
+  if(p1.length<8){ toast('Password must be at least 8 characters','error'); return; }
+  try {
+    await api('changePassword',{newPassword:p1});
+    toast('Password updated. Please re-login.');
+    document.getElementById('set-pwd').value='';
+    document.getElementById('set-pwd2').value='';
+  } catch(e){ toast(e.message,'error'); }
+});
+
+// ─── INIT ─────────────────────────────────
+loadDashboard();
+</script>
+</body>
+</html>
