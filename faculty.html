@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Meet the experienced faculty at Aakrit Classes, Dhanori Pune — subject specialists for Science, Commerce, JEE and NEET." />
+  <title>Faculty | Aakrit Classes Dhanori</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .faculty-detail-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      box-shadow: 0 4px 24px var(--shadow);
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 0;
+      margin-bottom: var(--sp-md);
+      transition: all var(--t-normal) var(--ease);
+    }
+    .faculty-detail-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 48px var(--shadow);
+    }
+    .faculty-detail-card__img {
+      background: var(--grad-hero);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 56px;
+      color: rgba(255,255,255,0.4);
+      min-height: 200px;
+    }
+    .faculty-detail-card__body {
+      padding: var(--sp-md) var(--sp-lg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .faculty-detail-card__exp {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(245,180,0,0.1);
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 10px;
+      align-self: flex-start;
+    }
+    .faculty-detail-card h3 {
+      color: var(--navy);
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+    .faculty-detail-card__role {
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-bottom: var(--sp-sm);
+    }
+    .faculty-detail-card__bio {
+      font-size: 15px;
+      color: var(--text-body);
+      margin-bottom: var(--sp-sm);
+      line-height: 1.7;
+    }
+    .faculty-detail-card__subjects {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    @media (max-width: 600px) {
+      .faculty-detail-card {
+        grid-template-columns: 1fr;
+      }
+      .faculty-detail-card__img {
+        min-height: 160px;
+      }
+    }
+    .commitment-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--sp-md);
+    }
+    .commitment-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: var(--sp-md);
+      text-align: center;
+    }
+    .commitment-card__icon {
+      font-size: 36px;
+      margin-bottom: var(--sp-sm);
+    }
+    .commitment-card h3 {
+      color: var(--navy);
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+    .commitment-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar solid">
+  <div class="container">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo">
+        <span class="navbar__logo-name">Aakrit Classes</span>
+        <span class="navbar__logo-tagline">Dhanori, Pune</span>
+      </a>
+      <ul class="navbar__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="results.html">Results</a></li>
+        <li><a href="faculty.html" class="active">Faculty</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="contact.html" class="navbar__cta">Free Counseling</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu">
+  <button class="mobile-close">✕</button>
+  <a href="index.html">Home</a>
+  <a href="courses.html">Courses</a>
+  <a href="results.html">Results</a>
+  <a href="faculty.html">Faculty</a>
+  <a href="reviews.html">Reviews</a>
+  <a href="contact.html">Free Counseling →</a>
+</div>
+
+<section class="page-hero">
+  <div class="hero__bg-pattern" aria-hidden="true"></div>
+  <div class="hero__grid-overlay" aria-hidden="true"></div>
+  <div class="container">
+    <div class="page-hero__content">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Faculty</span>
+      </nav>
+      <h1>Meet Our Faculty</h1>
+      <p>Subject specialists who have dedicated their careers to student success — not just passing exams.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FACULTY INTRO -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="text-center reveal">
+      <p class="section-label">Our Team</p>
+      <h2 class="section-title">Teachers Who Go Beyond the Textbook</h2>
+      <p class="section-sub">Each faculty member at Aakrit Classes is chosen for subject depth, communication clarity, and student commitment — not just qualifications on paper.</p>
+    </div>
+    <div class="commitment-grid">
+      <div class="commitment-card reveal reveal--delay-1">
+        <div class="commitment-card__icon">🎓</div>
+        <h3>Subject Mastery</h3>
+        <p>Every teacher holds a post-graduate degree or equivalent in their subject area.</p>
+      </div>
+      <div class="commitment-card reveal reveal--delay-2">
+        <div class="commitment-card__icon">📅</div>
+        <h3>Syllabus Accountability</h3>
+        <p>Faculty members are accountable for completing 100% syllabus as per the academic calendar.</p>
+      </div>
+      <div class="commitment-card reveal reveal--delay-3">
+        <div class="commitment-card__icon">🕐</div>
+        <h3>Daily Doubt Hours</h3>
+        <p>Separate doubt sessions provided daily so no student's question is left unanswered.</p>
+      </div>
+      <div class="commitment-card reveal reveal--delay-4">
+        <div class="commitment-card__icon">📊</div>
+        <h3>Regular Student Tracking</h3>
+        <p>Monthly parent-teacher meetings and weekly progress reports for every student.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACULTY PROFILES -->
+<section class="section">
+  <div class="container">
+    <div class="text-center reveal">
+      <p class="section-label">Faculty Profiles</p>
+      <h2 class="section-title">The People Behind the Results</h2>
+    </div>
+
+    <!-- Science Faculty -->
+    <div class="reveal" style="margin-bottom:var(--sp-lg);">
+      <h3 style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:var(--sp-md);">Science Department</h3>
+
+      <div class="faculty-detail-card">
+        <div class="faculty-detail-card__img" aria-hidden="true">👨‍🔬</div>
+        <div class="faculty-detail-card__body">
+          <span class="faculty-detail-card__exp">12 Years Experience</span>
+          <h3>Mr. Rajesh Kumar</h3>
+          <div class="faculty-detail-card__role">Senior Physics Faculty · JEE Specialist</div>
+          <p class="faculty-detail-card__bio">MSc Physics from Pune University. Has mentored 100+ JEE aspirants over 12 years. Known for making complex mechanics and electrodynamics concepts accessible through real-world examples and structured problem-solving techniques.</p>
+          <div class="faculty-detail-card__subjects">
+            <span class="subject-tag">Physics 11th</span>
+            <span class="subject-tag">Physics 12th</span>
+            <span class="subject-tag">JEE Physics</span>
+            <span class="subject-tag">NEET Physics</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="faculty-detail-card">
+        <div class="faculty-detail-card__img" aria-hidden="true">👩‍🔬</div>
+        <div class="faculty-detail-card__body">
+          <span class="faculty-detail-card__exp">9 Years Experience</span>
+          <h3>Ms. Priyanka Desai</h3>
+          <div class="faculty-detail-card__role">Chemistry Faculty · NEET Specialist</div>
+          <p class="faculty-detail-card__bio">MSc Organic Chemistry from SPPU. Specializes in Organic reaction mechanisms and Inorganic Chemistry. Her students consistently report chemistry as their highest-scoring subject in NEET.</p>
+          <div class="faculty-detail-card__subjects">
+            <span class="subject-tag">Organic Chemistry</span>
+            <span class="subject-tag">Inorganic Chemistry</span>
+            <span class="subject-tag">Physical Chemistry</span>
+            <span class="subject-tag">NEET Chemistry</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="faculty-detail-card">
+        <div class="faculty-detail-card__img" aria-hidden="true">👩‍🏫</div>
+        <div class="faculty-detail-card__body">
+          <span class="faculty-detail-card__exp">11 Years Experience</span>
+          <h3>Ms. Supriya Nair</h3>
+          <div class="faculty-detail-card__role">Biology Faculty · NEET Specialist</div>
+          <p class="faculty-detail-card__bio">MSc Botany with teaching experience across CBSE and SSC boards. Known for her visual teaching approach — diagrams, flowcharts, and mnemonic devices that make Biology retention significantly easier for students.</p>
+          <div class="faculty-detail-card__subjects">
+            <span class="subject-tag">Botany</span>
+            <span class="subject-tag">Zoology</span>
+            <span class="subject-tag">NEET Biology</span>
+            <span class="subject-tag">NCERT Mastery</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Maths -->
+    <div class="reveal" style="margin-bottom:var(--sp-lg);">
+      <h3 style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:var(--sp-md);">Mathematics Department</h3>
+
+      <div class="faculty-detail-card">
+        <div class="faculty-detail-card__img" aria-hidden="true">👨‍💻</div>
+        <div class="faculty-detail-card__body">
+          <span class="faculty-detail-card__exp">15 Years Experience</span>
+          <h3>Mr. Santosh Pawar</h3>
+          <div class="faculty-detail-card__role">Senior Maths Faculty · JEE Maths Specialist</div>
+          <p class="faculty-detail-card__bio">BE + MSc Maths from COEP Pune. 15 years of teaching JEE Mathematics. Covers Calculus, Coordinate Geometry, Algebra and Probability with focus on speed + accuracy needed for JEE Advanced. Our most senior teacher.</p>
+          <div class="faculty-detail-card__subjects">
+            <span class="subject-tag">JEE Maths</span>
+            <span class="subject-tag">Calculus</span>
+            <span class="subject-tag">Algebra</span>
+            <span class="subject-tag">Class 6–10 Maths</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Commerce -->
+    <div class="reveal">
+      <h3 style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:var(--sp-md);">Commerce Department</h3>
+
+      <div class="faculty-detail-card">
+        <div class="faculty-detail-card__img" aria-hidden="true">👩‍💼</div>
+        <div class="faculty-detail-card__body">
+          <span class="faculty-detail-card__exp">8 Years Experience</span>
+          <h3>Ms. Anita Kulkarni</h3>
+          <div class="faculty-detail-card__role">Commerce Faculty · Accounts Specialist</div>
+          <p class="faculty-detail-card__bio">MCom from Pune University. Specializes in Accountancy and Economics for 11th–12th and university-level students. Her students consistently report 85%+ in accounts in board exams.</p>
+          <div class="faculty-detail-card__subjects">
+            <span class="subject-tag">Accountancy</span>
+            <span class="subject-tag">Economics</span>
+            <span class="subject-tag">Business Studies</span>
+            <span class="subject-tag">BCom / MCom</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="container">
+    <h2>Meet Our Teachers in Person</h2>
+    <p>We encourage every parent to visit the center, observe a trial class, and meet the faculty before deciding. No pressure.</p>
+    <div class="cta-band__btns">
+      <a href="contact.html" class="btn btn-primary">📋 Book Visit / Free Counseling</a>
+      <a href="tel:+918530692113" class="btn btn-outline">📞 Call to Schedule</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand-name">Aakrit Classes</div>
+        <div class="footer__brand-tagline">Dhanori, Pune</div>
+        <p class="footer__brand-desc">Structured coaching for 6th–12th students.</p>
+      </div>
+      <div>
+        <div class="footer__col-title">Quick Links</div>
+        <ul class="footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="faculty.html">Faculty</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div></div>
+      <div>
+        <div class="footer__col-title">Reach Us</div>
+        <div class="footer__contact-item"><span class="footer__contact-icon">📞</span><a href="tel:+918530692113" style="color:inherit;">+91 85306 92113</a></div>
+        <div class="footer__contact-item"><span class="footer__contact-icon">📍</span><span>Dhanori, Pune</span></div><div class="footer__contact-item"><span class="footer__contact-icon">🗺️</span><a href="https://maps.app.goo.gl/TB6kDY7cbgw7dLxj9" target="_blank" rel="noopener" style="color:var(--gold);font-weight:600;font-size:14px;">Get Directions →</a</div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__bottom-text">© 2025 Aakrit Classes. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="floating-actions">
+  <a href="https://wa.me/918530692113" class="fab fab--whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+  <a href="tel:+918530692113" class="fab fab--call" aria-label="Call">📞</a>
+</div>
+<div class="mobile-sticky">
+  <a href="https://wa.me/918530692113" class="btn btn-primary" target="_blank" rel="noopener">💬 WhatsApp</a>
+  <a href="tel:+918530692113" class="btn btn-navy">📞 Call Now</a>
+</div>
+
+<script src="js/script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="See results achieved by Aakrit Classes students in boards, JEE, NEET and CET in Dhanori, Pune." />
+  <title>Results & Achievements | Aakrit Classes Dhanori</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .topper-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--sp-md);
+    }
+    .topper-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: var(--sp-md);
+      text-align: center;
+      box-shadow: 0 4px 24px var(--shadow);
+      transition: all var(--t-normal) var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+    .topper-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--grad-gold);
+    }
+    .topper-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px var(--shadow);
+    }
+    .topper-card__rank {
+      font-family: var(--font-head);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .topper-card__avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--grad-hero);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--white);
+      font-family: var(--font-head);
+      margin: 0 auto var(--sp-sm);
+    }
+    .topper-card__name {
+      font-family: var(--font-head);
+      font-weight: 700;
+      color: var(--navy);
+      font-size: 17px;
+      margin-bottom: 4px;
+    }
+    .topper-card__score {
+      font-size: 28px;
+      font-weight: 700;
+      font-family: var(--font-head);
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .topper-card__score span { color: var(--gold); }
+    .topper-card__stream {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .year-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-head);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy);
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      padding: 8px 18px;
+      border-radius: 100px;
+      margin-bottom: var(--sp-md);
+    }
+    .disclaimer {
+      background: rgba(245,180,0,0.08);
+      border: 1px solid rgba(245,180,0,0.25);
+      border-radius: var(--r-sm);
+      padding: var(--sp-md);
+      font-size: 14px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: var(--sp-lg);
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar solid">
+  <div class="container">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo">
+        <span class="navbar__logo-name">Aakrit Classes</span>
+        <span class="navbar__logo-tagline">Dhanori, Pune</span>
+      </a>
+      <ul class="navbar__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="results.html" class="active">Results</a></li>
+        <li><a href="faculty.html">Faculty</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="contact.html" class="navbar__cta">Free Counseling</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu">
+  <button class="mobile-close">✕</button>
+  <a href="index.html">Home</a>
+  <a href="courses.html">Courses</a>
+  <a href="results.html">Results</a>
+  <a href="faculty.html">Faculty</a>
+  <a href="reviews.html">Reviews</a>
+  <a href="contact.html">Free Counseling →</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="hero__bg-pattern" aria-hidden="true"></div>
+  <div class="hero__grid-overlay" aria-hidden="true"></div>
+  <div class="container">
+    <div class="page-hero__content">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Results</span>
+      </nav>
+      <h1>Our Results Speak</h1>
+      <p>Board toppers, JEE qualifiers, and NEET clearers — every year, consistently.</p>
+    </div>
+  </div>
+</section>
+
+<!-- KEY STATS -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="text-center reveal">
+      <p class="section-label">At a Glance</p>
+      <h2 class="section-title">Numbers That Matter</h2>
+    </div>
+    <div class="results__grid">
+      <div class="result-card reveal reveal--delay-1">
+        <div class="result-card__number" data-count="95" data-suffix="%"><span>0%</span></div>
+        <div class="result-card__label">Board Exam Pass Rate</div>
+      </div>
+      <div class="result-card reveal reveal--delay-2">
+        <div class="result-card__number" data-count="500" data-suffix="+"><span>0+</span></div>
+        <div class="result-card__label">Students Mentored</div>
+      </div>
+      <div class="result-card reveal reveal--delay-3">
+        <div class="result-card__number" data-count="50" data-suffix="+"><span>0+</span></div>
+        <div class="result-card__label">JEE / NEET Qualifiers</div>
+      </div>
+      <div class="result-card reveal reveal--delay-4">
+        <div class="result-card__number" data-count="10" data-suffix="+"><span>0+</span></div>
+        <div class="result-card__label">Years of Consistent Results</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOARD TOPPERS -->
+<section class="section">
+  <div class="container">
+    <div class="text-center reveal">
+      <p class="section-label">Academic Excellence</p>
+      <h2 class="section-title">Board Exam Toppers</h2>
+      <p class="section-sub">Our students consistently score 80%+ in board exams across all boards.</p>
+    </div>
+
+    <!-- 2024 Toppers -->
+    <div class="reveal">
+      <div class="year-label">🏆 2024 Board Results</div>
+    </div>
+    <div class="topper-grid">
+      <div class="topper-card reveal reveal--delay-1">
+        <div class="topper-card__rank">🥇 12th CBSE Topper</div>
+        <div class="topper-card__avatar">P</div>
+        <div class="topper-card__name">Priya Sharma</div>
+        <div class="topper-card__score"><span>91</span>%</div>
+        <div class="topper-card__stream">Science Stream · CBSE</div>
+      </div>
+      <div class="topper-card reveal reveal--delay-2">
+        <div class="topper-card__rank">🥇 12th SSC Topper</div>
+        <div class="topper-card__avatar">R</div>
+        <div class="topper-card__name">Rohan Patil</div>
+        <div class="topper-card__score"><span>88</span>%</div>
+        <div class="topper-card__stream">Commerce · SSC</div>
+      </div>
+      <div class="topper-card reveal reveal--delay-3">
+        <div class="topper-card__rank">10th Topper</div>
+        <div class="topper-card__avatar">A</div>
+        <div class="topper-card__name">Aarav Kulkarni</div>
+        <div class="topper-card__score"><span>94</span>%</div>
+        <div class="topper-card__stream">Class 10 · CBSE</div>
+      </div>
+      <div class="topper-card reveal reveal--delay-4">
+        <div class="topper-card__rank">Commerce Topper</div>
+        <div class="topper-card__avatar">S</div>
+        <div class="topper-card__name">Sneha Joshi</div>
+        <div class="topper-card__score"><span>89</span>%</div>
+        <div class="topper-card__stream">Commerce · ICSE</div>
+      </div>
+    </div>
+
+    <!-- 2023 Toppers -->
+    <div class="reveal" style="margin-top:48px;">
+      <div class="year-label">🏅 2023 Board Results</div>
+    </div>
+    <div class="topper-grid">
+      <div class="topper-card reveal reveal--delay-1">
+        <div class="topper-card__rank">12th Topper</div>
+        <div class="topper-card__avatar">M</div>
+        <div class="topper-card__name">Mayur Desai</div>
+        <div class="topper-card__score"><span>87</span>%</div>
+        <div class="topper-card__stream">Science · CBSE</div>
+      </div>
+      <div class="topper-card reveal reveal--delay-2">
+        <div class="topper-card__rank">SSC Topper</div>
+        <div class="topper-card__avatar">N</div>
+        <div class="topper-card__name">Neha Gaikwad</div>
+        <div class="topper-card__score"><span>92</span>%</div>
+        <div class="topper-card__stream">Class 10 · SSC</div>
+      </div>
+      <div class="topper-card reveal reveal--delay-3">
+        <div class="topper-card__rank">NEET Qualifier</div>
+        <div class="topper-card__avatar">K</div>
+        <div class="topper-card__name">Kartik More</div>
+        <div class="topper-card__score"><span>580</span></div>
+        <div class="topper-card__stream">NEET 2023</div>
+      </div>
+      <div class="topper-card reveal reveal--delay-4">
+        <div class="topper-card__rank">CET Qualifier</div>
+        <div class="topper-card__avatar">D</div>
+        <div class="topper-card__name">Diksha Salvi</div>
+        <div class="topper-card__score"><span>96</span></div>
+        <div class="topper-card__stream">MHT-CET Percentile</div>
+      </div>
+    </div>
+
+    <div class="disclaimer reveal">
+      ⚠️ Results shown are representative of students who attended classes regularly. Individual results may vary based on student effort and consistency. All figures are approximate.
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="container">
+    <h2>Your Child's Name Could Be Here Next Year</h2>
+    <p>Consistent effort + the right guidance = results. Book a free counseling today.</p>
+    <div class="cta-band__btns">
+      <a href="contact.html" class="btn btn-primary">📋 Book Free Counseling</a>
+      <a href="https://wa.me/918530692113" class="btn btn-outline" target="_blank" rel="noopener">💬 WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand-name">Aakrit Classes</div>
+        <div class="footer__brand-tagline">Dhanori, Pune</div>
+        <p class="footer__brand-desc">Structured coaching for 6th–12th students.</p>
+      </div>
+      <div>
+        <div class="footer__col-title">Quick Links</div>
+        <ul class="footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="results.html">Results</a></li>
+          <li><a href="faculty.html">Faculty</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div></div>
+      <div>
+        <div class="footer__col-title">Reach Us</div>
+        <div class="footer__contact-item"><span class="footer__contact-icon">📞</span><a href="tel:+918530692113" style="color:inherit;">+91 85306 92113</a></div>
+        <div class="footer__contact-item"><span class="footer__contact-icon">📍</span><span>Dhanori, Pune</span></div><div class="footer__contact-item"><span class="footer__contact-icon">🗺️</span><a href="https://maps.app.goo.gl/TB6kDY7cbgw7dLxj9" target="_blank" rel="noopener" style="color:var(--gold);font-weight:600;font-size:14px;">Get Directions →</a</div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__bottom-text">© 2025 Aakrit Classes. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="floating-actions">
+  <a href="https://wa.me/918530692113" class="fab fab--whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+  <a href="tel:+918530692113" class="fab fab--call" aria-label="Call">📞</a>
+</div>
+<div class="mobile-sticky">
+  <a href="https://wa.me/918530692113" class="btn btn-primary" target="_blank" rel="noopener">💬 WhatsApp</a>
+  <a href="tel:+918530692113" class="btn btn-navy">📞 Call Now</a>
+</div>
+
+<script src="js/script.js" defer></script>
+</body>
+</html>

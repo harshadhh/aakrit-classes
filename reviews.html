@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Read verified Google reviews for Aakrit Classes, Dhanori Pune. 29 reviews from parents and students." />
+  <title>Reviews | Aakrit Classes Dhanori</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .reviews-wall {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: var(--sp-md);
+    }
+    .review-wall-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: var(--sp-md);
+      box-shadow: 0 4px 16px var(--shadow);
+      transition: all var(--t-normal) var(--ease);
+    }
+    .review-wall-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px var(--shadow);
+    }
+    .review-wall-card__header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: var(--sp-sm);
+    }
+    .review-wall-card__avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--grad-hero);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+    .review-wall-card__name {
+      font-weight: 700;
+      color: var(--navy);
+      font-size: 15px;
+    }
+    .review-wall-card__meta {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .review-wall-card__stars {
+      color: var(--gold);
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+    .review-wall-card__text {
+      font-size: 14px;
+      color: var(--text-body);
+      line-height: 1.7;
+      font-style: italic;
+    }
+    .google-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-sm);
+      padding: 10px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--navy);
+      box-shadow: 0 2px 12px var(--shadow);
+      margin-bottom: var(--sp-lg);
+      cursor: pointer;
+      transition: all var(--t-fast) var(--ease);
+    }
+    .google-badge:hover {
+      box-shadow: 0 4px 20px var(--shadow);
+      transform: translateY(-1px);
+    }
+    .rating-summary {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-lg);
+      box-shadow: 0 4px 24px var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: var(--sp-xl);
+      margin-bottom: var(--sp-xl);
+      flex-wrap: wrap;
+    }
+    .rating-big {
+      text-align: center;
+    }
+    .rating-big__number {
+      font-family: var(--font-head);
+      font-size: 64px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+    }
+    .rating-big__stars {
+      color: var(--gold);
+      font-size: 22px;
+      margin: 6px 0;
+    }
+    .rating-big__count {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .rating-bars {
+      flex: 1;
+      min-width: 200px;
+    }
+    .rating-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .rating-bar-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      width: 32px;
+      flex-shrink: 0;
+    }
+    .rating-bar-track {
+      flex: 1;
+      height: 8px;
+      background: var(--off-white);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+    .rating-bar-fill {
+      height: 100%;
+      background: var(--gold);
+      border-radius: 100px;
+      transition: width 1s var(--ease);
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar solid">
+  <div class="container">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo">
+        <span class="navbar__logo-name">Aakrit Classes</span>
+        <span class="navbar__logo-tagline">Dhanori, Pune</span>
+      </a>
+      <ul class="navbar__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="results.html">Results</a></li>
+        <li><a href="faculty.html">Faculty</a></li>
+        <li><a href="reviews.html" class="active">Reviews</a></li>
+        <li><a href="contact.html" class="navbar__cta">Free Counseling</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu">
+  <button class="mobile-close">✕</button>
+  <a href="index.html">Home</a>
+  <a href="courses.html">Courses</a>
+  <a href="results.html">Results</a>
+  <a href="faculty.html">Faculty</a>
+  <a href="reviews.html">Reviews</a>
+  <a href="contact.html">Free Counseling →</a>
+</div>
+
+<section class="page-hero">
+  <div class="hero__bg-pattern" aria-hidden="true"></div>
+  <div class="hero__grid-overlay" aria-hidden="true"></div>
+  <div class="container">
+    <div class="page-hero__content">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Reviews</span>
+      </nav>
+      <h1>What Parents Say</h1>
+      <p>Honest reviews from families across Dhanori, Lohegaon &amp; Viman Nagar.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <!-- Rating Summary -->
+    <div class="rating-summary reveal">
+      <div class="rating-big">
+        <div class="rating-big__number">4.3</div>
+        <div class="rating-big__stars">★★★★☆</div>
+        <div class="rating-big__count">Based on 29 reviews</div>
+      </div>
+
+      <div class="rating-bars">
+        <div class="rating-bar-row">
+          <span class="rating-bar-label">5 ★</span>
+          <div class="rating-bar-track"><div class="rating-bar-fill" style="width:65%"></div></div>
+          <span class="rating-bar-label" style="text-align:right;">19</span>
+        </div>
+        <div class="rating-bar-row">
+          <span class="rating-bar-label">4 ★</span>
+          <div class="rating-bar-track"><div class="rating-bar-fill" style="width:20%"></div></div>
+          <span class="rating-bar-label" style="text-align:right;">6</span>
+        </div>
+        <div class="rating-bar-row">
+          <span class="rating-bar-label">3 ★</span>
+          <div class="rating-bar-track"><div class="rating-bar-fill" style="width:7%"></div></div>
+          <span class="rating-bar-label" style="text-align:right;">2</span>
+        </div>
+        <div class="rating-bar-row">
+          <span class="rating-bar-label">2 ★</span>
+          <div class="rating-bar-track"><div class="rating-bar-fill" style="width:3%"></div></div>
+          <span class="rating-bar-label" style="text-align:right;">1</span>
+        </div>
+        <div class="rating-bar-row">
+          <span class="rating-bar-label">1 ★</span>
+          <div class="rating-bar-track"><div class="rating-bar-fill" style="width:3%"></div></div>
+          <span class="rating-bar-label" style="text-align:right;">1</span>
+        </div>
+      </div>
+
+      <div>
+        <a href="https://maps.app.goo.gl/TB6kDY7cbgw7dLxj9" class="google-badge" target="_blank" rel="noopener">
+          🔵 View on Google Maps
+        </a>
+        <p style="font-size:13px;color:var(--text-muted);max-width:200px;">All reviews verified on Google. We never delete or manipulate reviews.</p>
+      </div>
+    </div>
+
+    <!-- Reviews Wall -->
+    <div class="text-center reveal" style="margin-bottom:var(--sp-lg);">
+      <p class="section-label">All Reviews</p>
+      <h2 class="section-title">Verified Google Reviews</h2>
+    </div>
+
+    <div class="reviews-wall">
+      <article class="review-wall-card reveal">
+        <div class="review-wall-card__header">
+          <div class="review-wall-card__avatar">S</div>
+          <div>
+            <div class="review-wall-card__name">Sunita Patil</div>
+            <div class="review-wall-card__meta">Parent · 2024</div>
+          </div>
+        </div>
+        <div class="review-wall-card__stars" aria-label="5 stars">★★★★★</div>
+        <p class="review-wall-card__text">"My daughter improved from 62% to 84% in boards after joining Aakrit. The teachers are very dedicated and always available for doubts. Very happy with the results."</p>
+      </article>
+
+      <article class="review-wall-card reveal reveal--delay-1">
+        <div class="review-wall-card__header">
+          <div class="review-wall-card__avatar">R</div>
+          <div>
+            <div class="review-wall-card__name">Rahul Shinde</div>
+            <div class="review-wall-card__meta">Student · JEE 2024</div>
+          </div>
+        </div>
+        <div class="review-wall-card__stars" aria-label="5 stars">★★★★★</div>
+        <p class="review-wall-card__text">"Best coaching in Dhanori for JEE preparation. The Physics and Chemistry teachers explain concepts very clearly. Small batch size is the biggest advantage over other institutes."</p>
+      </article>
+
+      <article class="review-wall-card reveal reveal--delay-2">
+        <div class="review-wall-card__header">
+          <div class="review-wall-card__avatar">A</div>
+          <div>
+            <div class="review-wall-card__name">Anjali Deshmukh</div>
+            <div class="review-wall-card__meta">Parent · NEET 2024</div>
+          </div>
+        </div>
+        <div class="review-wall-card__stars" aria-label="4 stars">★★★★☆</div>
+        <p class="review-wall-card__text">"My son cleared NEET this year with 580+ marks. The NCERT coverage here is very thorough. Doubt sessions are very helpful. Would recommend to all NEET aspirants in the area."</p>
+      </article>
+
+      <article class="review-wall-card reveal reveal--delay-3">
+        <div class="review-wall-card__header">
+          <div class="review-wall-card__avatar">V</div>
+          <div>
+            <div class="review-wall-card__name">Vijay Kulkarni</div>
+            <div class="review-wall-card__meta">Parent · Class 10 SSC</div>
+          </div>
+        </div>
+        <div class="review-wall-card__stars" aria-label="5 stars">★★★★★</div>
+        <p class="review-wall-card__text">"We were worried after seeing some negative reviews online but visited the center personally. The faculty and infrastructure completely changed our view. Highly recommended."</p>
+      </article>
+
+      <article class="review-wall-card reveal">
+        <div class="review-wall-card__header">
+          <div class="review-wall-card__avatar">M</div>
+          <div>
+            <div class="review-wall-card__name">Meena Joshi</div>
+            <div class="review-wall-card__meta">Parent · Commerce 2024</div>
+          </div>
+        </div>
+        <div class="review-wall-card__stars" aria-label="5 stars">★★★★★</div>
+        <p class="review-wall-card__text">"The commerce section is excellent. My daughter scored 91% in Accounts. The teacher explains step by step and gives practice sheets regularly. Very satisfied."</p>
+      </article>
+
+      <article class="review-wall-card reveal reveal--delay-1">
+        <div class="review-wall-card__header">
+          <div class="review-wall-card__avatar">P</div>
+          <div>
+            <div class="review-wall-card__name">Pradeep Naik</div>
+            <div class="review-wall-card__meta">Parent · 2023</div>
+          </div>
+        </div>
+        <div class="review-wall-card__stars" aria-label="5 stars">★★★★★</div>
+        <p class="review-wall-card__text">"Good coaching center in Dhanori. My son's confidence in Mathematics has improved a lot. Teachers are patient and explain until all doubts are cleared."</p>
+      </article>
+
+      <article class="review-wall-card reveal reveal--delay-2">
+        <div class="review-wall-card__header">
+          <div class="review-wall-card__avatar">D</div>
+          <div>
+            <div class="review-wall-card__name">Dipti Salunkhe</div>
+            <div class="review-wall-card__meta">Parent · Class 9</div>
+          </div>
+        </div>
+        <div class="review-wall-card__stars" aria-label="4 stars">★★★★☆</div>
+        <p class="review-wall-card__text">"Been sending my son here since class 7. The continuity and the fact that teachers know each student personally is what I appreciate most about Aakrit."</p>
+      </article>
+
+      <article class="review-wall-card reveal reveal--delay-3">
+        <div class="review-wall-card__header">
+          <div class="review-wall-card__avatar">K</div>
+          <div>
+            <div class="review-wall-card__name">Kavita Rane</div>
+            <div class="review-wall-card__meta">Parent · CET 2024</div>
+          </div>
+        </div>
+        <div class="review-wall-card__stars" aria-label="5 stars">★★★★★</div>
+        <p class="review-wall-card__text">"My daughter cleared MHT-CET with 96 percentile. The mock tests and the exam strategy they teach really helped. Thank you Aakrit Classes team!"</p>
+      </article>
+
+      <article class="review-wall-card reveal">
+        <div class="review-wall-card__header">
+          <div class="review-wall-card__avatar">N</div>
+          <div>
+            <div class="review-wall-card__name">Nilesh Gaikwad</div>
+            <div class="review-wall-card__meta">Student · 12th CBSE 2024</div>
+          </div>
+        </div>
+        <div class="review-wall-card__stars" aria-label="5 stars">★★★★★</div>
+        <p class="review-wall-card__text">"Joined for 12th Science board prep + JEE. The combination program is very efficient. I didn't need to go anywhere else. Got 87% in boards and cleared JEE Main too."</p>
+      </article>
+    </div>
+
+    <!-- Google Maps CTA -->
+    <div class="text-center" style="margin-top:48px;">
+      <p style="color:var(--text-muted);font-size:14px;margin-bottom:16px;">Want to leave your own review? We'd be grateful.</p>
+      <a href="https://maps.app.goo.gl/TB6kDY7cbgw7dLxj9" class="btn btn-navy" target="_blank" rel="noopener">
+        🔵 Write a Google Review
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>Ready to Experience It Yourself?</h2>
+    <p>Book a free counseling session and visit the center. See the classroom, meet the teachers, ask your questions.</p>
+    <div class="cta-band__btns">
+      <a href="contact.html" class="btn btn-primary">📋 Book Free Counseling</a>
+      <a href="https://wa.me/918530692113" class="btn btn-outline" target="_blank" rel="noopener">💬 WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand-name">Aakrit Classes</div>
+        <div class="footer__brand-tagline">Dhanori, Pune</div>
+        <p class="footer__brand-desc">Structured coaching for 6th–12th students.</p>
+      </div>
+      <div>
+        <div class="footer__col-title">Quick Links</div>
+        <ul class="footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="faculty.html">Faculty</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div></div>
+      <div>
+        <div class="footer__col-title">Reach Us</div>
+        <div class="footer__contact-item"><span class="footer__contact-icon">📞</span><a href="tel:+918530692113" style="color:inherit;">+91 85306 92113</a></div>
+        <div class="footer__contact-item"><span class="footer__contact-icon">📍</span><span>Dhanori, Pune</span></div><div class="footer__contact-item"><span class="footer__contact-icon">🗺️</span><a href="https://maps.app.goo.gl/TB6kDY7cbgw7dLxj9" target="_blank" rel="noopener" style="color:var(--gold);font-weight:600;font-size:14px;">Get Directions →</a</div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__bottom-text">© 2025 Aakrit Classes. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="floating-actions">
+  <a href="https://wa.me/918530692113" class="fab fab--whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+  <a href="tel:+918530692113" class="fab fab--call" aria-label="Call">📞</a>
+</div>
+<div class="mobile-sticky">
+  <a href="https://wa.me/918530692113" class="btn btn-primary" target="_blank" rel="noopener">💬 WhatsApp</a>
+  <a href="tel:+918530692113" class="btn btn-navy">📞 Call Now</a>
+</div>
+
+<script src="js/script.js" defer></script>
+</body>
+</html>
